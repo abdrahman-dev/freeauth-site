@@ -32,7 +32,7 @@ export default function Footer(): ReactElement {
         </nav>
       </div>
       <p className="mx-auto mt-6 w-full max-w-5xl text-center text-[13px] font-light text-text-muted">
-        Built by Abdrahman, one late night at a time.
+        Built and maintained by Abdrahman Mussa.
       </p>
     </footer>
   )

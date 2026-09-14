@@ -1,0 +1,63 @@
+# OpenAuth
+
+> OpenAuth is a database-agnostic authentication toolkit for Node.js. It provides email OTP verification, JWT access and refresh sessions with rotation and reuse detection, and per-flow lockouts, behind one core API that never touches your database driver directly.
+
+OpenAuth solves repeat auth plumbing: instead of rewriting login for every database, one core adapts to the schema you already run through adapters.
+
+- Backend and library source: https://github.com/abdrahman-dev/openauth
+- This documentation site source: https://github.com/abdrahman-dev/openauth-site
+- Maintainer: Abdrahman Mussa
+
+## Main concepts
+
+- **Core**: all auth decisions live in one database-agnostic core (`createAuth`), shared by any consumer of the library.
+- **Adapters**: the only bridge between core and database. User operations plus session operations, normalized to `UserRecord` / `SessionRecord` shapes.
+- **Sessions**: short-lived stateless access tokens plus long-lived server-side refresh sessions. Every refresh rotates the pair; replaying an old token wipes all of the user's sessions.
+- **OTP**: 6-digit codes, hashed at rest, 10-minute expiry, per-flow attempt counters with lockouts. OpenAuth generates and verifies codes but sends nothing; delivery is the developer's job.
+- **Reference app**: a small runnable Express app demonstrating one wiring of the library with MongoDB/Mongoose. Not part of the published package.
+
+## Adapters
+
+Documented adapters, and only these:
+
+- Prisma (PostgreSQL): [Prisma](/docs/adapters/prisma)
+- Mongoose (MongoDB): [Mongoose](/docs/adapters/mongoose)
+
+## Documentation
+
+Getting started:
+
+- [Introduction](/docs): what OpenAuth is and how it is organized
+- [Installation](/docs/installation): `npm install openauth`, adapter peers, reference-app setup
+- [Quickstart](/docs/quickstart): register, verify, log in, and call an authenticated endpoint
+
+Core concepts:
+
+- [Architecture](/docs/concepts/architecture): layers, request lifecycle, adapter boundary
+- [Authentication & sessions](/docs/concepts/authentication): tokens, cookies, rotation, passwords, OTP
+- [Adapters](/docs/concepts/adapters): the adapter contract and record shapes
+- [Validation & errors](/docs/concepts/validation-errors): Zod boundary validation, errors, status codes
+- [Security](/docs/concepts/security): implemented protections and known concerns
+
+API reference (reference-app endpoints under `/api/auth`):
+
+- [Overview](/docs/api): conventions for auth, rate limits, validation, responses
+- [GET / (status)](/docs/api/status), [POST /register](/docs/api/register), [POST /login](/docs/api/login), [POST /verify-email](/docs/api/verify-email), [POST /resend-otp](/docs/api/resend-otp), [POST /refresh](/docs/api/refresh), [GET /me](/docs/api/me), [POST /forgot-password](/docs/api/forgot-password), [POST /reset-password](/docs/api/reset-password), [POST /change-password](/docs/api/change-password), [POST /logout](/docs/api/logout)
+
+Adapters:
+
+- [Overview](/docs/adapters): choosing a store
+- [Mongoose](/docs/adapters/mongoose): connection, models, queries
+- [Prisma](/docs/adapters/prisma): schema, usage, limits
+
+Guides:
+
+- [Email delivery](/docs/guides/email-delivery): connecting an email provider to OTP issuance
+- [Going to production](/docs/guides/production): checklist and explicit unknowns
+
+Also on this site: [FAQ](/faq) and the [landing page](/).
+
+## Notes
+
+- OpenAuth is early-stage software; verify current status in the docs before building on it.
+- Only behavior documented above and in the linked pages is claimed. Adapter support is exactly Prisma and Mongoose.

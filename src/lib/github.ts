@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react'
 
-/* Single source for the public repo identity. Override with
-   VITE_GITHUB_REPO (see .env.example) once the real repo path is
-   known — e.g. VITE_GITHUB_REPO=openauth/openauth. */
+/* Single source for the public repo identity. The default is the
+   official OpenAuth backend repository. Override with
+   VITE_GITHUB_REPO (see .env.example) only to point at a different
+   repo, e.g. a fork. */
 
 function resolveRepo(): string {
   const raw: unknown = import.meta.env.VITE_GITHUB_REPO
   if (typeof raw === 'string' && raw.length > 0) {
     return raw
   }
-  return 'openauth/openauth'
+  return 'abdrahman-dev/openauth'
 }
 
 export const GITHUB_REPO: string = resolveRepo()

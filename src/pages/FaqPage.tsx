@@ -8,7 +8,17 @@ import { GITHUB_URL } from '../lib/github.ts'
 
 function FaqPage(): ReactElement {
   useEffect(() => {
-    document.title = 'FAQ — OpenAuth'
+    document.title = 'FAQ: OpenAuth'
+    let tag = document.querySelector('meta[name="description"]')
+    if (tag === null) {
+      tag = document.createElement('meta')
+      tag.setAttribute('name', 'description')
+      document.head.appendChild(tag)
+    }
+    tag.setAttribute(
+      'content',
+      'Honest answers about OpenAuth: what it does, production readiness, supported databases, contributing, and licensing.',
+    )
   }, [])
 
   return (

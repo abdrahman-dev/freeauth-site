@@ -78,7 +78,14 @@ function EllipsisIcon({ className = '' }: IconProps): ReactElement {
 
 function Home(): ReactElement {
   useEffect(() => {
-    document.title = 'OpenAuth — Authentication for Node.js'
+    document.title = 'OpenAuth: Authentication for Node.js'
+    // Back/forward navigation reuses the document, so restore the
+    // landing description after visiting a docs page.
+    const tag = document.querySelector('meta[name="description"]')
+    tag?.setAttribute(
+      'content',
+      'OpenAuth: DB-agnostic authentication for Node.js. One API for Prisma and Mongoose.',
+    )
   }, [])
 
   return (
@@ -98,17 +105,17 @@ function Home(): ReactElement {
           className="mx-auto w-full max-w-5xl px-6 py-20 sm:py-32"
         >
           {/*
-            FEATURES VOICE — Set A live (the maintainer who's rewritten
+            FEATURES VOICE: Set A live (the maintainer who's rewritten
             auth too often). Supabase card removed: the adapter isn't
             implemented yet, so the third slot is an honest dashed
             placeholder instead of a badge wall.
             --
-            PLACEHOLDER COPY OPTIONS — C live:
-            A. "More, eventually." — next adapter arrives when someone
+            PLACEHOLDER COPY OPTIONS: C live:
+            A. "More, eventually." Next adapter arrives when someone
                needs it badly enough to build it.
-            B. "Your database here." — two that work beats twelve that
+            B. "Your database here." Two that work beats twelve that
                mostly do; an invitation, not a gap.
-            C. "Two down. Yours next?" [LIVE] — no badge wall; the third
+            C. "Two down. Yours next?" [LIVE]. No badge wall; the third
                slot is reserved for real production use.
           */}
           <SectionHeading
@@ -118,7 +125,7 @@ function Home(): ReactElement {
           <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-3">
             <FeatureCard
               title="Prisma"
-              description="Your schema already describes your users — sessions just live alongside them. No migration guides, no shadow tables breeding in the dark."
+              description="Your schema already describes your users. Sessions just live alongside them. No migration guides, no shadow tables breeding in the dark."
               icon={<DatabaseIcon />}
             />
             <FeatureCard
@@ -154,10 +161,10 @@ function Home(): ReactElement {
             headingId="opensource-heading"
           />
           {/*
-            OPEN-SOURCE PARAGRAPH — Option B live. Alternatives kept:
+            OPEN-SOURCE PARAGRAPH: Option B live. Alternatives kept:
             A. Straightforward two-paragraph version with the contributor
                link inline.
-            C. Driest and most breathable — short punchy sentences.
+            C. Driest and most breathable: short punchy sentences.
           */}
           <p className="mt-8 text-[15px] leading-[1.75] text-text-dim">
             Free forever, MIT-licensed, no asterisk. There is no paid tier
@@ -165,7 +172,7 @@ function Home(): ReactElement {
           </p>
           <p className="mt-4 text-[15px] leading-[1.75] text-text-dim">
             Prisma and Mongoose came first because the makers use them
-            daily. The next ones come from contributors —{' '}
+            daily. The next ones come from contributors:{' '}
             <a
               href={GITHUB_URL}
               target="_blank"
@@ -174,7 +181,7 @@ function Home(): ReactElement {
             >
               whoever shows up to build them
             </a>{' '}
-            — and whichever stack you bring, OpenAuth meets it where it is.
+            Whichever stack you bring, OpenAuth meets it where it is.
             No migration. No re-platforming. No new database religion.
           </p>
         </section>

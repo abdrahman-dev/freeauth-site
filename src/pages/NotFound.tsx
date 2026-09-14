@@ -14,7 +14,7 @@ const SUBTITLE = 'No auth required to find your way back.'
 
 function NotFound(): ReactElement {
   useEffect(() => {
-    document.title = 'Page not found — OpenAuth'
+    document.title = 'Page not found: OpenAuth'
   }, [])
 
   return (

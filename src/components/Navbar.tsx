@@ -42,7 +42,7 @@ export default function Navbar(): ReactElement {
             alt=""
             width={2171}
             height={724}
-            className="h-10 w-auto"
+            className="h-11 w-auto"
           />
         </a>
 

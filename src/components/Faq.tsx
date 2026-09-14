@@ -11,7 +11,7 @@ const FAQS: FaqItem[] = [
   {
     question: 'What does OpenAuth actually do?',
     answer:
-      "It's the boring plumbing of login — sessions, tokens, password checks — packaged so you stop writing it from scratch. It doesn't host anything or lock you into a platform; it runs inside your Node app, against your database.",
+      "It's the boring plumbing of login: sessions, tokens, password checks, packaged so you stop writing it from scratch. It doesn't host anything or lock you into a platform; it runs inside your Node app, against your database.",
   },
   {
     question: "Why DB-agnostic? Isn't that just extra abstraction?",
@@ -21,12 +21,12 @@ const FAQS: FaqItem[] = [
   {
     question: 'Is it ready to use in production?',
     answer:
-      "Honestly? Not yet. It's early and the API is still shifting — perfect for side projects and kicking the tires, not yet for anything holding real user data. The status badge up top will tell you when that changes. It won't throw a party — we'll just quietly update the badge.",
+      "Honestly? Not yet. It's early and the API is still shifting. Perfect for side projects and kicking the tires, not yet for anything holding real user data. The status badge up top will tell you when that changes. It won't throw a party. We'll just quietly update the badge.",
   },
   {
     question: 'Which databases are supported?',
     answer:
-      "Prisma and Mongoose today — the two the makers run daily. More adapters are planned, driven by what contributors actually use — if yours is missing, that's a great first issue.",
+      "Prisma and Mongoose today. The two the makers run daily. More adapters are planned, driven by what contributors actually use. If yours is missing, that's a great first issue.",
   },
   {
     question: 'How can I contribute?',

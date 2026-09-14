@@ -2,11 +2,12 @@ import { useEffect, useState } from 'react'
 import type { ReactElement } from 'react'
 import Home from './pages/Home.tsx'
 import FaqPage from './pages/FaqPage.tsx'
-import DocsPage from './pages/DocsPage.tsx'
+import DocsShell from './docs/DocsShell.tsx'
 import NotFound from './pages/NotFound.tsx'
 
 /* Minimal client-side routing (no dependency): "/" renders the landing
-   page, "/faq" the FAQ page, "/docs" the docs placeholder, any other
+   page, "/faq" the FAQ page, "/docs/*" the documentation section
+   (one real route per docs page, resolved in DocsShell), any other
    path renders the 404 page.
    Note: direct loads of unknown paths also need an SPA fallback in
    the static host config. */
@@ -40,8 +41,8 @@ function App(): ReactElement {
   if (path === '/faq') {
     return <FaqPage />
   }
-  if (path === '/docs') {
-    return <DocsPage />
+  if (path === '/docs' || path.startsWith('/docs/')) {
+    return <DocsShell path={path} />
   }
   if (path !== '/') {
     return <NotFound />

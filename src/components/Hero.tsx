@@ -133,7 +133,7 @@ export default function Hero(): ReactElement {
               DB-agnostic&nbsp;&middot;&nbsp;Node.js&nbsp;&ge;&nbsp;18
             </p>
             <p
-              title="OpenAuth is pre-release — the API may still change, but it's already fun to try."
+              title="OpenAuth is pre-release. The API may still change, but it's already fun to try."
               className="
                 inline-flex
                 items-center

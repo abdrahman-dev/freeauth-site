@@ -272,9 +272,11 @@ This keeps the palette centrally controllable.
 
 ## 5.1 Primary Typeface
 
-**Inter**
+**Geist Sans**
 
-Use Inter for:
+Shipped as `Geist Variable` (variable weight range 100-900), self-hosted.
+
+Use Geist Sans for:
 
 - headings
 - body copy
@@ -297,9 +299,11 @@ Avoid using `600`/`700` for major headlines unless an explicit component require
 
 ## 5.2 Technical Typeface
 
-**JetBrains Mono**
+**Geist Mono**
 
-Use JetBrains Mono for:
+Shipped as `Geist Mono Variable` (variable weight range 100-900), self-hosted.
+
+Use Geist Mono for:
 
 - code
 - package names
@@ -320,16 +324,16 @@ Primary system weights:
 
 | Style | Font | Weight | Size | Line Height | Tracking | Color |
 |---|---|---:|---:|---:|---:|---|
-| Display / Hero | Inter | 300 | `52px` | `1.10` | `-0.02em` | `#DDD9F0` |
-| H1 | Inter | 300 | `36px` | `1.15` | `-0.015em` | `#DDD9F0` |
-| H2 | Inter | 300 | `26px` | `1.25` | `-0.01em` | `#DDD9F0` |
-| H3 | Inter | 400 | `18px` | `1.40` | `0` | `#C8C4E0` |
-| H4 | Inter | 500 | `14px` | `1.40` | `0.03em` | `#C8C4E0` |
-| Body Large | Inter | 400 | `16px` | `1.70` | normal | `#9896B8` |
-| Body | Inter | 400 | `14px` | `1.70` | normal | `#9896B8` |
-| Small / Caption | Inter | 400 | `12px` | `1.60` | `0.02em` | `#6E6B8F` |
-| Label / Caps | Inter | 500 | `11px` | `1.00` | `0.18em` | `#6E6B8F` |
-| Code | JetBrains Mono | 400 | `13px` | `1.75` | normal | `#9896B8` |
+| Display / Hero | Geist Sans | 300 | `52px` | `1.10` | `-0.02em` | `#DDD9F0` |
+| H1 | Geist Sans | 300 | `36px` | `1.15` | `-0.015em` | `#DDD9F0` |
+| H2 | Geist Sans | 300 | `26px` | `1.25` | `-0.01em` | `#DDD9F0` |
+| H3 | Geist Sans | 400 | `18px` | `1.40` | `0` | `#C8C4E0` |
+| H4 | Geist Sans | 500 | `14px` | `1.40` | `0.03em` | `#C8C4E0` |
+| Body Large | Geist Sans | 400 | `16px` | `1.70` | normal | `#9896B8` |
+| Body | Geist Sans | 400 | `14px` | `1.70` | normal | `#9896B8` |
+| Small / Caption | Geist Sans | 400 | `12px` | `1.60` | `0.02em` | `#6E6B8F` |
+| Label / Caps | Geist Sans | 500 | `11px` | `1.00` | `0.18em` | `#6E6B8F` |
+| Code | Geist Mono | 400 | `13px` | `1.75` | normal | `#9896B8` |
 
 ### Display rules
 
@@ -395,7 +399,7 @@ The system defines three canonical button variants:
 Canonical characteristics:
 
 ```text
-Font: Inter
+Font: Geist Sans
 Weight: 400
 Size: 13px
 Letter spacing: 0.06em
@@ -551,7 +555,7 @@ Canonical geometry:
 Background: #131128
 Radius: 10px
 Padding: 10px 14px
-Font: Inter
+Font: Geist Sans
 Font size: 13px
 Text: #DDD9F0
 ```
@@ -613,7 +617,7 @@ Please enter a valid email.
 Labels are small and technical:
 
 ```text
-Font: Inter
+Font: Geist Sans
 Weight: 500
 Size: 11px
 Letter spacing: 0.12em
@@ -634,7 +638,7 @@ Canonical:
 ```text
 Padding: 4px 11px
 Radius: 20px
-Font: Inter
+Font: Geist Sans
 Weight: 400
 Size: 11px
 Letter spacing: 0.08em
@@ -715,7 +719,7 @@ Icon color: #9896B8
 Card title:
 
 ```text
-Inter
+Geist Sans
 400
 14px
 #DDD9F0
@@ -724,7 +728,7 @@ Inter
 Card body:
 
 ```text
-Inter
+Geist Sans
 400
 13px
 line-height: 1.65
@@ -768,7 +772,7 @@ Background: #131128
 Border: rgba(221,217,240,0.06)
 Radius: 12px
 Padding: 20px 24px
-Font: JetBrains Mono
+Font: Geist Mono
 Size: 13px
 Line height: 1.75
 Base text: #9896B8
@@ -800,7 +804,7 @@ Background: rgba(221,217,240,0.05)
 Border: rgba(221,217,240,0.08)
 Radius: 6px
 Padding: 5px 8px
-Font: JetBrains Mono
+Font: Geist Mono
 Size: 10px
 Letter spacing: 0.1em
 ```
@@ -870,7 +874,7 @@ Secondary circular center detail may use:
 Wordmark:
 
 ```text
-Inter
+Geist Sans
 Weight: 300
 Size: 15px
 Color: #DDD9F0
@@ -884,7 +888,7 @@ Letter spacing: 0.08em
 Default:
 
 ```text
-Inter
+Geist Sans
 400
 13px
 #6E6B8F
@@ -1080,7 +1084,7 @@ Padding: 48px 40px
 Footer copy:
 
 ```text
-Inter
+Geist Sans
 Weight 300
 13px
 #3C3959
@@ -1123,7 +1127,7 @@ Style:
 ### Prefix
 
 ```text
-JetBrains Mono
+Geist Mono
 10px
 letter spacing: 0.20em
 color: #5A5680
@@ -1132,7 +1136,7 @@ color: #5A5680
 ### Section title
 
 ```text
-Inter
+Geist Sans
 Weight: 300
 Size: 13px
 Letter spacing: 0.25em
@@ -1157,7 +1161,7 @@ The section heading is intentionally understated.
 
 - Use sparse starlight silver for important highlights, CTAs, and key headlines.
 - Prefer one confident CTA per section.
-- Use Inter `300` for display text and major headlines.
+- Use Geist Sans `300` for display text and major headlines.
 - Use soft low-opacity silver/indigo glows.
 - Keep the starfield subtle.
 - Use the `8px / 12px / 20px` radius system as the primary shape language.
@@ -1677,8 +1681,8 @@ The following is a canonical starting point for implementation:
   --color-error: #C17070;
   --color-success: #7BB8A4;
 
-  --font-sans: "Inter", sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
+  --font-sans: "Geist Variable", "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono Variable", "Geist Mono", ui-monospace, SFMono-Regular, monospace;
 
   --radius-sm: 8px;
   --radius-md: 12px;
@@ -1720,8 +1724,8 @@ SUCCESS          #7BB8A4
 ## Fonts
 
 ```text
-UI / Display:    Inter
-Code / Technical: JetBrains Mono
+UI / Display:    Geist Sans
+Code / Technical: Geist Mono
 ```
 
 ## Main Weights

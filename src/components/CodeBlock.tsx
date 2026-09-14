@@ -5,6 +5,8 @@ export interface CodeBlockProps {
   code: string
   /** Short note rendered under the block, e.g. an illustrative-API disclaimer. */
   caption?: string
+  /** Language label rendered top-left, e.g. "bash", "json", "ts". Purely presentational. */
+  language?: string
 }
 
 type Tone = 'base' | 'body' | 'dim' | 'subtle'
@@ -16,7 +18,22 @@ const TONE_CLASS: Record<Tone, string> = {
   subtle: 'text-text-subtle',
 }
 
-const KEYWORDS = new Set(['import', 'from', 'export', 'const'])
+const KEYWORDS = new Set([
+  'import',
+  'from',
+  'export',
+  'const',
+  'function',
+  'return',
+  'await',
+  'async',
+  'interface',
+  'type',
+  'new',
+  'true',
+  'false',
+  'null',
+])
 
 /**
  * Minimal restrained tokenizer: comments, string literals, a few keywords,
@@ -47,7 +64,9 @@ function tokenizeLine(line: string, keyPrefix: string): ReactNode[] {
       return
     }
     // Highlight a small keyword set; everything else stays base.
-    const words = part.split(/(\bimport\b|\bfrom\b|\bexport\b|\bconst\b|\bnpm\b)/g)
+    const words = part.split(
+      /(\bimport\b|\bfrom\b|\bexport\b|\bconst\b|\bnpm\b|\bcurl\b|\bfunction\b|\breturn\b|\bawait\b|\basync\b|\binterface\b|\btype\b|\bnew\b|\btrue\b|\bfalse\b|\bnull\b)/g,
+    )
     words.forEach((word, wordIndex) => {
       if (word === '') return
       const tone: Tone = KEYWORDS.has(word)
@@ -65,7 +84,11 @@ function tokenizeLine(line: string, keyPrefix: string): ReactNode[] {
   return nodes
 }
 
-export default function CodeBlock({ code, caption }: CodeBlockProps): ReactElement {
+export default function CodeBlock({
+  code,
+  caption,
+  language,
+}: CodeBlockProps): ReactElement {
   const [copied, setCopied] = useState(false)
   const timer = useRef<number | undefined>(undefined)
 
@@ -99,6 +122,14 @@ export default function CodeBlock({ code, caption }: CodeBlockProps): ReactEleme
   return (
     <figure className="m-0">
       <div className="relative rounded-[12px] border border-[rgba(221,217,240,0.06)] bg-bg-elevated px-4 py-5 shadow-[0_4px_24px_rgba(0,0,0,0.3)] sm:px-6">
+        {language !== undefined && language !== '' && (
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute left-4 top-4 select-none font-mono text-[10px] uppercase tracking-[0.14em] text-text-subtle sm:left-6"
+          >
+            {language}
+          </span>
+        )}
         <button
           type="button"
           onClick={() => void onCopy()}
@@ -110,7 +141,11 @@ export default function CodeBlock({ code, caption }: CodeBlockProps): ReactEleme
         >
           {copied ? 'copied' : 'copy'}
         </button>
-        <pre className="overflow-x-auto pr-16 font-mono text-[13px] leading-[1.75]">
+        <pre
+          className={`code-scroll overflow-x-auto pr-16 font-mono text-[13px] leading-[1.75] ${
+            language !== undefined && language !== '' ? 'pt-6' : ''
+          }`}
+        >
           <code>
             {lines.map((line, lineIndex) => (
               <span key={lineIndex} className="block min-h-[1.75em]">
