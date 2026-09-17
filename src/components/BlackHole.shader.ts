@@ -317,6 +317,24 @@ void main() {
     0.97255
   );
 
+  vec3 teal = vec3(
+    0.41569,
+    0.68627,
+    0.64706
+  );
+
+  vec3 tealBright = vec3(
+    0.54118,
+    0.78431,
+    0.74118
+  );
+
+  vec3 tealDim = vec3(
+    0.30588,
+    0.56078,
+    0.52941
+  );
+
   /*
     Performance gate — disk band. innerDisk/outerDisk are exactly zero
     outside diskRadius in (0.165, 0.78), so the two disk fbm layers and
@@ -434,11 +452,16 @@ void main() {
         clamp(
           0.28 +
           innerHeat * 0.55 +
-          turbulence * 0.15,
+          turbulence * 0.15 +
+          (beam - 0.5) * 0.16,
           0.0,
           1.0
         )
       );
+
+    // Cool lensing fleck — turbulent filaments on the beamed side pick up teal
+    float tealFleck = clamp(turbulence * 0.7 * beam, 0.0, 0.55);
+    diskColor = mix(diskColor, teal, tealFleck);
 
     vec3 diskLight =
       diskColor *
@@ -574,6 +597,28 @@ void main() {
     silverBright *
     horizonEdge *
     0.12;
+
+  // Teal lensing rim — cool accent highlight hugging the horizon just outside the photon ring
+  float tealRim =
+    smoothstep(
+      0.186,
+      0.193,
+      r
+    ) *
+    (
+      1.0 -
+      smoothstep(
+        0.193,
+        0.230,
+        r
+      )
+    );
+
+  col +=
+    tealBright *
+    tealRim *
+    0.65 *
+    beam;
 
   /* -------------------------------------------------------------- */
   /* Text scrim — soft localized darkening behind the headline      */

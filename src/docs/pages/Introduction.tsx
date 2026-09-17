@@ -9,6 +9,7 @@ import {
   PageHeader,
   UL,
 } from '../../components/docs/primitives.tsx'
+import DonateLink from '../../components/DonateLink.tsx'
 
 export default function Introduction(): ReactElement {
   return (
@@ -18,11 +19,12 @@ export default function Introduction(): ReactElement {
         title="Introduction"
         lede={
           <>
-            OpenAuth is a database-agnostic authentication toolkit for
-            Node.js: email OTP verification, JWT access and refresh
-            sessions with rotation and reuse detection, and per-flow
-            lockouts, behind one core API that never touches your
-            database driver directly.
+            OpenAuth is a{' '}
+            <span className="text-[#8AC8BD]">database-agnostic</span>{' '}
+            authentication toolkit for Node.js: email OTP verification,
+            JWT access and refresh sessions with rotation and reuse
+            detection, and per-flow lockouts, behind one core API that
+            never touches your database driver directly.
           </>
         }
       />
@@ -33,7 +35,11 @@ export default function Introduction(): ReactElement {
           'User registration with email OTP verification.',
           'Login gated on verified email.',
           'JWT access sessions (15 minutes) plus refresh sessions (7 days), stored server-side and rotated on every refresh.',
-          'Reuse detection: presenting an already-rotated refresh token wipes all of the user’s sessions.',
+          <>
+            <span className="text-[#8AC8BD]">Reuse detection</span>: presenting
+            an already-rotated refresh token wipes all of the user’s
+            sessions.
+          </>,
           'Forgot-password and reset-password flows over OTP.',
           'Resend verification OTP, authenticated password change, logout, and a current-user profile.',
         ]}
@@ -92,6 +98,15 @@ export default function Introduction(): ReactElement {
           </>,
         ]}
       />
+
+      <H2 id="support">Support this project</H2>
+      <P>
+        OpenAuth is free and open-source. If it helps your work, consider
+        supporting its maintenance.
+      </P>
+      <div className="mt-6">
+        <DonateLink variant="prominent" />
+      </div>
     </>
   )
 }

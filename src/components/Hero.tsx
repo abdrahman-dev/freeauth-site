@@ -183,9 +183,9 @@ export default function Hero(): ReactElement {
               [text-shadow:0_1px_24px_rgba(13,11,26,0.98)]
             "
           >
-            Setup is suspiciously short. Describe it
-            to your coding agent and come back to
-            working auth.
+            Setup is suspiciously short. Describe it to your{' '}
+            <span className="text-[#8AC8BD]">coding agent</span> and come
+            back to working auth.
           </p>
 
           {/*

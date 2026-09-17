@@ -218,12 +218,12 @@ export default function DocsLayout({
         >
           <div
             aria-hidden="true"
-            className="absolute inset-0 bg-[rgba(13,11,26,0.72)]"
+            className="docs-drawer-overlay absolute inset-0 bg-[rgba(13,11,26,0.72)]"
             onClick={() => {
               setDrawerOpen(false)
             }}
           />
-          <div className="docs-scroll absolute left-0 top-0 h-full w-[300px] max-w-[85vw] overflow-y-auto border-r border-[rgba(221,217,240,0.08)] bg-bg-base px-4 py-5">
+          <div className="docs-scroll docs-drawer-panel absolute left-0 top-0 h-full w-[300px] max-w-[85vw] overflow-y-auto border-r border-[rgba(221,217,240,0.08)] bg-bg-base px-4 py-5">
             <div className="mb-5 flex items-center justify-between">
               <span className="px-3 font-mono text-[10px] uppercase tracking-[0.2em] text-text-subtle">
                 Browse docs

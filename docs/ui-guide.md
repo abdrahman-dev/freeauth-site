@@ -23,7 +23,7 @@ The visual language is:
 - documentation/tooling oriented
 - confident through simplicity
 
-The design uses a **deep indigo night-sky foundation**, a **purple-tinted neutral scale**, **silver highlights**, and extremely subtle atmospheric glow.
+The design uses a **deep indigo night-sky foundation**, a **purple-tinted neutral scale**, **silver highlights** as the primary emphasis, **restrained warm and teal accents** as dual secondary emphases, and extremely subtle atmospheric glow.
 
 The intended feeling is:
 
@@ -35,7 +35,7 @@ Do not turn the interface into a generic “AI SaaS” aesthetic.
 
 **Restraint is part of the brand.**
 
-Silver is rare. Glow is rare. Accent color is rare. Motion is subtle. Large empty areas are intentional.
+Silver is rare. Warm accent is rare. Teal accent is rare. Glow is rare. Accent color is rare. Motion is subtle. Large empty areas are intentional.
 
 The interface should look considered even when very little is happening.
 
@@ -188,11 +188,108 @@ Dimmed or secondary silver:
 #B8B4D4
 ```
 
+Silver remains the **primary** interaction and emphasis language. No warm accent may replace it as the default CTA or primary highlight.
+
 Do not introduce another white/silver unless a specific requirement proves these tokens insufficient.
 
 ---
 
-## 3.4 Accent and Semantic Colors
+## 3.4 Warm Accent Palette
+
+OpenAuth uses **one** secondary warm accent family to break the cold indigo/silver monotony without becoming colorful. It provides temperature contrast, not decoration.
+
+| Token | Name | Hex | Semantic Role |
+|---|---|---:|---|
+| `accent-warm` | Warm Accent | `#C9A66B` | Secondary emphasis / focal point |
+| `accent-warm-bright` | Warm Accent Bright | `#D9B978` | Hover / active warm emphasis |
+| `accent-warm-dim` | Warm Accent Dim | `#9E8050` | Muted warm detail |
+
+### Warm accent behavior
+
+Base warm accent:
+
+```text
+#C9A66B
+```
+
+Hover / brighter warm state:
+
+```text
+#D9B978
+```
+
+Muted warm detail:
+
+```text
+#9E8050
+```
+
+The warm accent is **secondary** to silver by design:
+
+```text
+Deep indigo = environment / foundation
+Purple-tinted neutrals = structure / secondary information
+Silver = primary interaction and primary emphasis
+Warm accent = secondary emphasis / visual focal point
+Dusty rose = error
+Cool mint = success
+```
+
+Warm accent must appear often enough to establish rhythm (small highlights, annotations, badges, active markers) but never as the dominant color. It interacts with silver as temperature contrast: silver is cold and primary, warm is hot and secondary. With indigo it adds depth: indigo is ambient atmosphere, warm is occasional pinpoint signal.
+
+Do not introduce any additional warm, orange, gold, yellow, cyan, or neon variant beyond these three values.
+
+---
+
+## 3.5 Teal Accent Palette
+
+OpenAuth uses a second, cool-contrast accent to complement the warm accent without becoming colorful. It provides a quiet cyan counterpoint to the warm indigo/silver field — restrained, desaturated, never neon or saturated cyan.
+
+| Token | Name | Hex | Semantic Role |
+|---|---|---:|---|
+| `accent-teal` | Teal Accent | `#6AAFA5` | Cool secondary emphasis / lensing highlight |
+| `accent-teal-bright` | Teal Accent Bright | `#8AC8BD` | Hover / active teal emphasis |
+| `accent-teal-dim` | Teal Accent Dim | `#4E8F87` | Muted teal detail |
+
+### Teal accent behavior
+
+Base teal accent:
+
+```text
+#6AAFA5
+```
+
+Hover / brighter teal state:
+
+```text
+#8AC8BD
+```
+
+Muted teal detail:
+
+```text
+#4E8F87
+```
+
+The teal accent is **cool secondary** to warm by design — warm reads as heat, teal as cool lensing signal. Both are secondary to silver and must remain sparse:
+
+```text
+Deep indigo = environment / foundation
+Purple-tinted neutrals = structure / secondary information
+Silver = primary interaction and primary emphasis
+Warm accent = warm secondary emphasis / focal point
+Teal accent = cool secondary emphasis / lensing detail
+Dusty rose = error
+Cool mint = success
+```
+
+Teal must appear as a *clear but restrained* highlight — e.g. a lensing rim, a disk fleck, or an arc — not as a page wash or full recolor. It interacts with warm as temperature contrast (warm = hot, teal = cool) against the indigo/silver field.
+
+Do not introduce any additional teal, cyan, turquoise, or aqua variant beyond these three values. The warm and teal families together are the only two accents.
+
+---
+
+## 3.6 Accent and Semantic Colors
 
 | Token | Name | Hex | Purpose |
 |---|---|---:|---|
@@ -241,6 +338,14 @@ Recommended aliases:
 --color-silver-bright: #ECEAF8;
 --color-silver-dim: #B8B4D4;
 
+--color-accent-warm: #C9A66B;
+--color-accent-warm-bright: #D9B978;
+--color-accent-warm-dim: #9E8050;
+
+--color-accent-teal: #6AAFA5;
+--color-accent-teal-bright: #8AC8BD;
+--color-accent-teal-dim: #4E8F87;
+
 --color-accent: #5A5680;
 --color-error: #C17070;
 --color-success: #7BB8A4;
@@ -265,6 +370,82 @@ color: "var(--color-text-dim)"
 or the project's equivalent design-token utility/class.
 
 This keeps the palette centrally controllable.
+
+---
+
+# 4.1 Color Hierarchy
+
+The hierarchy is intentional and must be preserved:
+
+```text
+1. Deep indigo       = environment / foundation
+2. Purple-tinted neutrals = structure / secondary information
+3. Silver            = primary interaction and primary emphasis
+4. Warm accent       = warm secondary emphasis / focal point
+5. Teal accent       = cool secondary emphasis / lensing detail
+6. Dusty rose        = error
+7. Cool mint         = success
+```
+
+Silver remains the primary CTA language. Warm and teal accents are *both* secondary and must not replace silver globally. Each secondary accent must remain sparse, localized, and intentional — teal as cool counterpoint to warm, not an additional dominant hue.
+
+### Warm Accent Usage
+
+Use the warm accent for:
+
+* secondary visual highlights
+* small hero annotations or technical eyebrow markers
+* selected technical labels and package/version metadata
+* subtle badges
+* small icons and tiny decorative markers
+* active/selected states where appropriate
+* important links or link hover states where silver would make the UI too monochromatic
+* subtle atmospheric gradients (occasional secondary atmosphere)
+* product metadata that needs visual distinction
+* occasional secondary CTA treatment where context demands it (classified as secondary, not default)
+
+The warm accent should appear often enough to establish visual rhythm, but not so often that it becomes dominant. Each use should feel deliberate, not decorative.
+
+### Where NOT to Use the Warm Accent
+
+Do NOT use the warm accent for:
+
+* large warm backgrounds or full-page warm gradients
+* every button becoming warm
+* large glowing orange/gold elements
+* warm-colored body text
+* replacing silver primary CTAs
+* large warm borders around cards
+* excessive warm glow or warm radial gradients as default background
+* warm syntax highlighting everywhere
+* using the accent merely because an element needs "more color"
+
+Restraint applies equally to the warm accent. If in doubt, leave it out.
+
+### Teal Accent Usage
+
+Use the teal accent for (cool counterpart to warm):
+
+* subtle lensing or rim-light highlights within atmospheric visuals (e.g. black hole arc / nebula edge)
+* cool-toned secondary badges or metadata where warm is already in use nearby
+* selected-state cool indicator where warm would be too hot
+* tiny cool decorative markers requiring contrast against warm
+
+Teal should appear *even more sparingly* than warm — one clear highlight per visual is enough to read as intentional. It exists as cool contrast, not as a second theme color.
+
+### Where NOT to Use the Teal Accent
+
+Do NOT use the teal accent for:
+
+* large teal/cyan backgrounds or full-page gradients
+* recoloring the entire black hole, disk, or hero
+* teal body text or large teal typography
+* replacing silver primary CTAs or warm secondary CTAs globally
+* large teal borders, glows, or card fills
+* teal syntax highlighting at scale
+* using teal merely to “add color” where none is needed
+
+Restraint applies doubly to teal. If warm already provides the secondary emphasis in a view, teal should often be omitted. If in doubt, leave it out.
 
 ---
 
@@ -456,7 +637,39 @@ Shadow:     none
 
 There should usually be **one confident primary CTA per section**.
 
-The primary CTA is intentionally silver.
+The primary CTA is intentionally silver. The warm accent must not become the default production CTA.
+
+### Warm Button Variant (Secondary / Exceptional)
+
+The warm accent may be used as a **secondary, contextual** button treatment where a warm focal point is intentionally desired:
+
+```text
+Background: #C9A66B
+Text:       #0D0B1A
+Border:     transparent
+Hover:      #D9B978
+Text:       #0D0B1A
+Active:     #9E8050
+Text:       #0D0B1A
+```
+
+Classify it explicitly as secondary/exceptional. Do not make every primary CTA warm. Silver remains canonical. Use the warm button sparingly, at most once per view and only where temperature contrast aids hierarchy.
+
+### Teal Button Variant (Secondary / Exceptional — Cool)
+
+The teal accent may be used as a **secondary, cool** button treatment where a cool lensing highlight is intentionally desired, as a direct alternative to the warm variant — never alongside it:
+
+```text
+Background: #6AAFA5
+Text:       #0D0B1A
+Border:     transparent
+Hover:      #8AC8BD
+Text:       #0D0B1A
+Active:     #4E8F87
+Text:       #0D0B1A
+```
+
+Classify it explicitly as secondary/exceptional and cool. Do not use warm and teal buttons in the same view. Silver remains canonical. Use teal sparingly, at most once per view.
 
 ---
 
@@ -676,6 +889,30 @@ Border: rgba(90,86,128,0.30)
 Text: #B8B4D4
 ```
 
+### Warm badge
+
+Restrained warm-accent variant for metadata that needs temperature distinction:
+
+```text
+Background: rgba(201,166,107,0.07)
+Border: rgba(201,166,107,0.20)
+Text: #D9B978
+```
+
+Keep it thin and restrained like all badges. Do not make it chunky. Use sparingly for version, sponsorship, or focal metadata.
+
+### Teal badge
+
+Restrained cool-accent variant for lensing/secondary cool metadata where warm would be too hot:
+
+```text
+Background: rgba(106,175,165,0.08)
+Border: rgba(106,175,165,0.22)
+Text: #8AC8BD
+```
+
+Keep it thin and restrained. Use only where a cool contrast to warm is intentionally desired, at most once per view. Do not use warm and teal badges side-by-side as decoration.
+
 ### Badge examples
 
 Valid concepts include:
@@ -748,6 +985,15 @@ Shadow: soft indigo-toned shadow
 ```
 
 The hover effect should feel like the card moved one elevation level upward.
+
+Cards remain primarily indigo/silver. The warm accent may appear as:
+
+* small icon detail or tint
+* metadata text
+* selected-state marker
+* tiny decorative dot
+
+Do not create warm card backgrounds or warm glowing outlines.
 
 ### Important
 
@@ -904,6 +1150,8 @@ Subtle silver glow
 
 Links should be quiet until interacted with.
 
+The warm accent may be used sparingly for an active state indicator, a small dot, or an occasional hover detail. Do not make the entire navbar warm.
+
 ### Accessibility / implementation rule
 
 Production navigation items that are links must have real `href` destinations.
@@ -995,6 +1243,14 @@ npm install openauth
 
 Do not stack multiple visually competing silver CTAs inside the same hero.
 
+The warm accent may be used as a small focal detail in the hero:
+
+* tiny eyebrow marker or technical annotation
+* small visual signal or highlighted word
+* subtle warm atmospheric point
+
+The headline itself remains silver. The warm accent must not compete with the headline, primary CTA, or supporting copy. It exists to add temperature contrast, not to become the hero's main color.
+
 ---
 
 # 16. Starfield / Atmospheric Texture
@@ -1031,15 +1287,13 @@ Use memoization or another stable data source so unrelated state changes do not 
 
 # 17. Atmospheric Glow
 
-Use the accent indigo:
+Use the accent indigo as the primary atmosphere:
 
 ```text
 #5A5680
 ```
 
-as the base for atmospheric gradients.
-
-Typical treatment:
+Typical indigo treatment:
 
 ```css
 radial-gradient(
@@ -1049,11 +1303,82 @@ radial-gradient(
 )
 ```
 
-Hero glow may be slightly stronger, around:
+Hero indigo glow may be slightly stronger, around:
 
 ```text
 rgba(90,86,128,0.12)
 ```
+
+### Warm Atmospheric Glow
+
+Warm glow is a **secondary, occasional** atmosphere. Use it to add temperature contrast at a focal point, not as a page default.
+
+Recommended values:
+
+```text
+rgba(201,166,107,0.06)
+```
+
+At most:
+
+```text
+rgba(201,166,107,0.09)
+```
+
+Warm glow must be significantly weaker than the warm UI accent and weaker than the indigo atmosphere in total presence:
+
+```text
+indigo atmosphere = primary atmosphere
+warm atmosphere   = occasional secondary atmosphere
+```
+
+Typical warm point:
+
+```css
+radial-gradient(
+  circle at 20% 30%,
+  rgba(201,166,107,0.06) 0%,
+  transparent 55%
+)
+```
+
+Never use large warm radial gradients as a default page background. Warm glow should feel like a pinpoint signal in cold infrastructure, not a warm wash.
+
+### Teal Atmospheric Glow
+
+Teal glow is a **cool, lensing-tinged** secondary atmosphere — the counterpart to warm — used sparingly for cool highlights such as a nebula rim or lensing edge. It is the rarest glow.
+
+Recommended values:
+
+```text
+rgba(106,175,165,0.05)
+```
+
+At most:
+
+```text
+rgba(106,175,165,0.08)
+```
+
+Teal glow must be weaker than both the indigo atmosphere and the warm glow in total presence:
+
+```text
+indigo atmosphere = primary atmosphere
+warm atmosphere   = occasional warm secondary
+teal atmosphere   = rare cool lensing accent
+```
+
+Typical teal point (e.g. black hole rim):
+
+```css
+radial-gradient(
+  ellipse at 68% 62%,
+  rgba(106,175,165,0.05) 0%,
+  transparent 52%
+)
+```
+
+Never use large teal/cyan gradients as a background. Teal glow should read as a cool lensing sheen, not a cyan wash. Do not use warm and teal glows as competing large washes in the same view.
 
 ### Rule
 
@@ -1110,7 +1435,30 @@ Do not make the footer visually louder than the main content.
 
 ---
 
-# 19. Section Headers
+# 19. Documentation UI
+
+Because OpenAuth is developer infrastructure, documentation must remain technical and restrained.
+
+The warm accent can be used for:
+
+* selected documentation state and active sidebar indicators
+* technical annotations and eyebrow markers
+* small callouts and inline reference markers
+* package and version metadata
+* subtle active link indicators
+
+Do not introduce:
+
+* colorful syntax highlighting
+* colorful documentation panels
+* warm backgrounds for long-form text
+* large warm callout fills
+
+Documentation chrome should stay indigo/silver; warm appears as pinpoint signal only.
+
+---
+
+# 20. Section Headers
 
 Sections use a technical annotation style.
 
@@ -1155,14 +1503,17 @@ The section heading is intentionally understated.
 
 ---
 
-# 20. Do / Don't Guidance
+# 21. Do / Don't Guidance
 
 ## DO
 
 - Use sparse starlight silver for important highlights, CTAs, and key headlines.
+- Use the warm accent as controlled temperature contrast to break repetitive indigo/silver sequences.
 - Prefer one confident CTA per section.
 - Use Geist Sans `300` for display text and major headlines.
-- Use soft low-opacity silver/indigo glows.
+- Use soft low-opacity silver/indigo glows and occasional warm point glows.
+- Keep the warm accent localized and reuse the same warm tokens consistently.
+- Allow the warm accent to establish visual rhythm without becoming dominant.
 - Keep the starfield subtle.
 - Use the `8px / 12px / 20px` radius system as the primary shape language.
 - Use generous whitespace.
@@ -1177,6 +1528,10 @@ The section heading is intentionally understated.
 - Do not use bright neon purple.
 - Do not use over-saturated violet accents.
 - Do not fill large surfaces with silver.
+- Do not introduce additional accent colors beyond the warm family.
+- Do not use warm color everywhere or make the interface gold/orange themed.
+- Do not replace silver as the primary CTA.
+- Do not create warm gradients across large surfaces or use warm glow as decoration without hierarchy.
 - Do not use `700+` typography weights for major display headlines.
 - Do not use black drop shadows as the default visual effect.
 - Do not make the starfield dense.
@@ -1189,7 +1544,7 @@ The section heading is intentionally understated.
 
 ---
 
-# 21. Interaction Philosophy
+# 22. Interaction Philosophy
 
 Interactions must preserve the same restraint as static UI.
 
@@ -1197,11 +1552,14 @@ Interactions must preserve the same restraint as static UI.
 
 Hover should generally mean:
 
-- slight brightness increase
+- slight brightness increase (silver or, where warm is already present, a subtle warm brightening)
 - small surface elevation
 - subtle border increase
 - restrained text color change
 - tiny glow when appropriate
+- small warm indicator where appropriate (e.g. dot or underline tint)
+
+Warm hover must remain restrained: a small warm brightness increase, not neon glow or large gradient.
 
 Not:
 
@@ -1214,7 +1572,7 @@ Not:
 
 Active should feel like a controlled compression in visual hierarchy.
 
-Use slight darkening or a small shift in surface treatment.
+Use slight darkening or a small shift in surface treatment. A small warm active marker is acceptable where the element already uses the warm accent; do not add glowing warm borders everywhere.
 
 ## Focus
 
@@ -1240,7 +1598,7 @@ Disabled elements:
 
 ---
 
-# 22. Accessibility
+# 23. Accessibility
 
 The visual style is intentionally low-contrast in secondary layers, but functional content must remain readable.
 
@@ -1298,7 +1656,7 @@ Use:
 
 ---
 
-# 23. Responsive Behavior
+# 24. Responsive Behavior
 
 The desktop composition can be spacious, but the visual identity must survive smaller screens.
 
@@ -1360,7 +1718,7 @@ rather than fixed widths.
 
 ---
 
-# 24. Spacing Philosophy
+# 25. Spacing Philosophy
 
 The original visual system uses generous spacing.
 
@@ -1397,7 +1755,7 @@ Whitespace communicates confidence and separation.
 
 ---
 
-# 25. Borders
+# 26. Borders
 
 Borders must generally be subtle.
 
@@ -1429,7 +1787,7 @@ Do not default to bright 1px silver outlines everywhere.
 
 ---
 
-# 26. Shadows
+# 27. Shadows
 
 The project prefers **indigo-tinted, soft depth**.
 
@@ -1465,7 +1823,7 @@ The visual hierarchy should mostly come from:
 
 ---
 
-# 27. Iconography
+# 28. Iconography
 
 Icons should follow a technical, thin-line language.
 
@@ -1489,7 +1847,7 @@ The star glyph is a key identity element and should remain thin-line.
 
 ---
 
-# 28. Component Architecture for the UI
+# 29. Component Architecture for the UI
 
 The visual system should be implemented as reusable layers.
 
@@ -1556,7 +1914,7 @@ Complete routes/screens composed from the above.
 
 ---
 
-# 29. Source-of-Truth Enforcement
+# 30. Source-of-Truth Enforcement
 
 The agent must treat this file as canonical.
 
@@ -1582,6 +1940,8 @@ Ask:
 
 Usually the answer should be yes.
 
+If the existing indigo/silver tokens make the UI feel too monotonous for a secondary emphasis, consider the warm accent tokens (`--color-accent-warm` family) before inventing another color.
+
 Do not create:
 
 ```text
@@ -1589,9 +1949,20 @@ random purple
 random gray
 random blue
 random white
+random orange/cyan/neon
 ```
 
-to solve local visual problems.
+to solve local visual problems. Do not introduce any color beyond the warm family; those three values are the only addition.
+
+The hierarchy remains:
+
+```text
+Indigo foundation
+→ Silver primary emphasis
+→ Warm accent secondary emphasis
+```
+
+When a visual situation feels too monotonous in indigo/silver alone, prefer a warm accent token before inventing anything new. Never invent another color.
 
 ## Before introducing a new radius
 
@@ -1621,7 +1992,7 @@ If not, do not add it.
 
 ---
 
-# 30. Figma / Prototype vs Production Implementation
+# 31. Figma / Prototype vs Production Implementation
 
 The Figma-generated implementation is a **visual reference**, not a requirement to copy prototype code literally.
 
@@ -1654,7 +2025,7 @@ The following are visual contracts:
 
 ---
 
-# 31. Recommended Token Definition
+# 32. Recommended Token Definition
 
 The following is a canonical starting point for implementation:
 
@@ -1678,6 +2049,12 @@ The following is a canonical starting point for implementation:
   --color-silver-dim: #B8B4D4;
 
   --color-accent-mid: #5A5680;
+  --color-accent-warm: #C9A66B;
+  --color-accent-warm-bright: #D9B978;
+  --color-accent-warm-dim: #9E8050;
+  --color-accent-teal: #6AAFA5;
+  --color-accent-teal-bright: #8AC8BD;
+  --color-accent-teal-dim: #4E8F87;
   --color-error: #C17070;
   --color-success: #7BB8A4;
 
@@ -1694,7 +2071,7 @@ This is the canonical palette represented by the current visual system.
 
 ---
 
-# 32. Quick Reference
+# 33. Quick Reference
 
 ## Colors
 
@@ -1716,6 +2093,14 @@ STARLIGHT        #DDD9F0
 SILVER BRIGHT    #ECEAF8
 SILVER DIM       #B8B4D4
 INDIGO MID       #5A5680
+
+WARM ACCENT      #C9A66B
+WARM BRIGHT      #D9B978
+WARM DIM         #9E8050
+
+TEAL ACCENT      #6AAFA5
+TEAL BRIGHT      #8AC8BD
+TEAL DIM         #4E8F87
 
 ERROR            #C17070
 SUCCESS          #7BB8A4
@@ -1753,7 +2138,15 @@ Purple-Tinted Neutrals
 +
 Sparse Silver Highlights
 +
-Subtle Indigo Glow
+Restrained Warm Accent
++
+Restrained Teal Accent (Cool Lensing)
++
+Subtle Indigo Atmosphere
++
+Occasional Warm Atmosphere
++
+Rare Teal Atmosphere (Lensing Sheen)
 +
 Generous Whitespace
 +
@@ -1766,7 +2159,7 @@ OpenAuth UI
 
 ---
 
-# 33. Final Agent Rule
+# 34. Final Agent Rule
 
 When an implementation decision is visually ambiguous:
 

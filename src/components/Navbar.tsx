@@ -49,13 +49,13 @@ export default function Navbar(): ReactElement {
         <div className="flex shrink-0 items-center gap-1 sm:gap-2">
           <a
             href="/faq"
-            className="inline-flex min-h-[44px] items-center rounded-md px-3 text-[13px] text-text-secondary transition-colors duration-200 hover:bg-[rgba(221,217,240,0.04)] hover:text-silver-primary"
+            className="inline-flex min-h-[44px] items-center rounded-md px-3 text-[13px] text-text-secondary transition-colors duration-200 hover:bg-[rgba(221,217,240,0.04)] hover:text-[#8AC8BD]"
           >
             FAQ
           </a>
           <a
             href="/docs"
-            className="inline-flex min-h-[44px] items-center rounded-md px-3 text-[13px] text-text-secondary transition-colors duration-200 hover:bg-[rgba(221,217,240,0.04)] hover:text-silver-primary"
+            className="inline-flex min-h-[44px] items-center rounded-md px-3 text-[13px] text-text-secondary transition-colors duration-200 hover:bg-[rgba(221,217,240,0.04)] hover:text-[#8AC8BD]"
           >
             Docs
           </a>
@@ -63,7 +63,7 @@ export default function Navbar(): ReactElement {
             href={GITHUB_URL}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex min-h-[44px] items-center gap-2 rounded-md px-3 text-[13px] text-text-secondary transition-colors duration-200 hover:bg-[rgba(221,217,240,0.04)] hover:text-silver-primary"
+            className="inline-flex min-h-[44px] items-center gap-2 rounded-md px-3 text-[13px] text-text-secondary transition-colors duration-200 hover:bg-[rgba(221,217,240,0.04)] hover:text-[#8AC8BD]"
           >
             <GitHubIcon />
             <span className="hidden min-[420px]:inline">Star on GitHub</span>

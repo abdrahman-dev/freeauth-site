@@ -135,8 +135,10 @@ export default function CodeBlock({
           onClick={() => void onCopy()}
           aria-live="polite"
           aria-label={copied ? 'Copied to clipboard' : 'Copy code to clipboard'}
-          className={`absolute right-4 top-4 rounded-[6px] border border-[rgba(221,217,240,0.08)] bg-[rgba(221,217,240,0.05)] px-2 py-[5px] font-mono text-[10px] tracking-[0.1em] transition-colors duration-200 hover:text-silver-primary ${
-            copied ? 'text-success' : 'text-text-dim'
+          className={`absolute right-4 top-4 rounded-[6px] border border-[rgba(221,217,240,0.08)] bg-[rgba(221,217,240,0.05)] px-2 py-[5px] font-mono text-[10px] tracking-[0.1em] transition-colors duration-200 ${
+            copied
+              ? 'text-success'
+              : 'text-text-dim hover:text-silver-primary'
           }`}
         >
           {copied ? 'copied' : 'copy'}

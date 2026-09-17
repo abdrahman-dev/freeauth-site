@@ -1,5 +1,6 @@
 import type { ReactElement } from 'react'
 import { GITHUB_URL } from '../lib/github.ts'
+import DonateLink from './DonateLink.tsx'
 
 export default function Footer(): ReactElement {
   return (
@@ -14,7 +15,7 @@ export default function Footer(): ReactElement {
         >
           <a
             href="/docs"
-            className="inline-flex min-h-[44px] items-center text-[13px] font-light text-text-subtle transition-colors duration-200 hover:text-silver-primary"
+            className="inline-flex min-h-[44px] items-center text-[13px] font-light text-text-subtle transition-colors duration-200 hover:text-[#8AC8BD]"
           >
             Docs
           </a>
@@ -22,7 +23,7 @@ export default function Footer(): ReactElement {
             href={GITHUB_URL}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex min-h-[44px] items-center text-[13px] font-light text-text-subtle transition-colors duration-200 hover:text-silver-primary"
+            className="inline-flex min-h-[44px] items-center text-[13px] font-light text-text-subtle transition-colors duration-200 hover:text-[#8AC8BD]"
           >
             GitHub
           </a>
@@ -31,9 +32,12 @@ export default function Footer(): ReactElement {
           </span>
         </nav>
       </div>
-      <p className="mx-auto mt-6 w-full max-w-5xl text-center text-[13px] font-light text-text-muted">
-        Built and maintained by Abdrahman Mussa.
-      </p>
+      <div className="mx-auto mt-6 flex w-full max-w-5xl flex-col items-center justify-center gap-2 sm:flex-row">
+        <p className="text-center text-[13px] font-light text-text-muted">
+          Built and maintained by Abdrahman Mussa.
+        </p>
+        <DonateLink variant="subtle" />
+      </div>
     </footer>
   )
 }

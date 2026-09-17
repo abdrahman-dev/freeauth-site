@@ -15,3 +15,21 @@ export function GitHubIcon(): ReactElement {
     </svg>
   )
 }
+
+export function HeartIcon(): ReactElement {
+  return (
+    <svg
+      width="15"
+      height="15"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.25}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M12 20.5 4.55 13.9a5.25 5.25 0 0 1 0-7.42 5.1 5.1 0 0 1 7.32 0L12 6.61l.13-.13a5.1 5.1 0 0 1 7.32 0 5.25 5.25 0 0 1 0 7.42L12 20.5Z" />
+    </svg>
+  )
+}
