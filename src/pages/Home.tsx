@@ -5,6 +5,7 @@ import Hero from '../components/Hero.tsx'
 import FeatureCard from '../components/FeatureCard.tsx'
 import Footer from '../components/Footer.tsx'
 import SectionHeading from '../components/SectionHeading.tsx'
+import CodeBlock from '../components/CodeBlock.tsx'
 import { GITHUB_URL } from '../lib/github.ts'
 
 /* Guide §27 — thin-line outline icons, currentColor, low visual weight */
@@ -149,6 +150,42 @@ function Home(): ReactElement {
                 for whatever a contributor actually runs in production.
               </p>
             </article>
+          </div>
+        </section>
+
+        <section
+          aria-labelledby="install-heading"
+          className="mx-auto w-full max-w-3xl px-6 pb-16 sm:pb-24"
+        >
+          <SectionHeading title="Wire it up" headingId="install-heading" />
+          <p className="mt-8 max-w-[60ch] text-[15px] leading-[1.75] text-text-dim">
+            You&apos;ve installed it — here&apos;s where it clicks. A few
+            lines connect your database and you have working auth, with the
+            docs ready when you want the full picture.
+          </p>
+          <div className="mt-6">
+            <CodeBlock
+              code={`import { createAuth } from 'openauth'
+import { mongooseAdapter } from 'openauth/mongoose'
+
+const auth = createAuth({
+  adapter: mongooseAdapter(),
+  secrets: {
+    accessTokenSecret: process.env.ACCESS_TOKEN_SECRET!,
+    refreshTokenSecret: process.env.REFRESH_TOKEN_SECRET!
+  }
+})`}
+              language="typescript"
+            />
+            {/* pnpm/yarn tabs can be added here later */}
+          </div>
+          <div className="mt-6">
+            <a
+              href="/docs"
+              className="inline-flex min-h-[44px] items-center text-[13px] tracking-[0.06em] text-text-dim underline decoration-[rgba(221,217,240,0.25)] underline-offset-[3px] transition-colors duration-200 hover:text-silver-primary"
+            >
+              View documentation →
+            </a>
           </div>
         </section>
 

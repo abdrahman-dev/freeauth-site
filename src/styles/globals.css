@@ -189,20 +189,78 @@ body {
   .openauth-fallback-glow-animated {
     animation: openauth-glow-breathe 9s ease-in-out infinite;
   }
-  /* Restrained "alive" pulse for the pre-release status dot — opacity
-     only, slow, and fully static when reduced motion is preferred. */
+  /* Restrained "alive" pulse for the pre-release status dot — slow
+     scale + opacity breathing, fully static when reduced motion set. */
   .openauth-status-pulse {
-    animation: openauth-status-pulse 2.6s ease-in-out infinite;
+    animation: openauth-status-pulse 2.4s ease-in-out infinite;
   }
 }
 
 @keyframes openauth-status-pulse {
   0%,
   100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+/* Terminal caret for the Hero install snippet — a solid mono-width
+   block that blinks hard on/off like a real shell prompt. Only mounted
+   via CodeBlock's showCursor prop (default false), so docs pages stay
+   static. */
+.terminal-caret {
+  display: inline-block;
+  width: 8px;
+  height: 1.2em;
+  margin-left: 3px;
+  border-radius: 1px;
+  vertical-align: text-bottom;
+  background-color: var(--color-text-dim);
+}
+
+@keyframes terminal-caret-blink {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {
-    opacity: 0.35;
+    opacity: 0;
+  }
+}
+
+/* Ambient glow halo behind the primary "Get started" CTA. Renders on
+   ::before so it never fights the element's own hover shadow. Static
+   glow by default; pulses only when motion is allowed. */
+.openauth-cta-glow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 12px;
+  box-shadow: 0 0 24px rgba(221, 217, 240, 0.18);
+  pointer-events: none;
+}
+
+@keyframes openauth-cta-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 18px rgba(221, 217, 240, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(221, 217, 240, 0.35);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .terminal-caret {
+    animation: terminal-caret-blink 1s steps(1, end) infinite;
+  }
+  .openauth-cta-glow::before {
+    animation: openauth-cta-glow 3s ease-in-out infinite;
   }
 }
 

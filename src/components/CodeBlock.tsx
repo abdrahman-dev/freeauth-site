@@ -7,6 +7,10 @@ export interface CodeBlockProps {
   caption?: string
   /** Language label rendered top-left, e.g. "bash", "json", "ts". Purely presentational. */
   language?: string
+  /** Show a blinking terminal caret after the last line. Defaults to
+      false; intended only for the one-liner command in the hero, not
+      docs reading contexts. */
+  showCursor?: boolean
 }
 
 type Tone = 'base' | 'body' | 'dim' | 'subtle'
@@ -88,6 +92,7 @@ export default function CodeBlock({
   code,
   caption,
   language,
+  showCursor = false,
 }: CodeBlockProps): ReactElement {
   const [copied, setCopied] = useState(false)
   const timer = useRef<number | undefined>(undefined)
@@ -121,7 +126,7 @@ export default function CodeBlock({
 
   return (
     <figure className="m-0">
-      <div className="relative rounded-[12px] border border-[rgba(221,217,240,0.06)] bg-bg-elevated px-4 py-5 shadow-[0_4px_24px_rgba(0,0,0,0.3)] sm:px-6">
+      <div className="relative rounded-[12px] border border-[rgba(221,217,240,0.08)] bg-[rgba(19,17,40,0.75)] px-4 py-5 shadow-[0_4px_24px_rgba(0,0,0,0.35)] backdrop-blur-[2px] sm:px-6">
         {language !== undefined && language !== '' && (
           <span
             aria-hidden="true"
@@ -152,6 +157,9 @@ export default function CodeBlock({
             {lines.map((line, lineIndex) => (
               <span key={lineIndex} className="block min-h-[1.75em]">
                 {tokenizeLine(line, `l${lineIndex}`)}
+                {showCursor && lineIndex === lines.length - 1 && (
+                  <span aria-hidden="true" className="terminal-caret" />
+                )}
               </span>
             ))}
           </code>

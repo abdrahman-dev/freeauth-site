@@ -1,58 +1,39 @@
-import { Suspense, lazy } from 'react'
 import type { ReactElement } from 'react'
 import { GITHUB_URL } from '../lib/github.ts'
-
-const BlackHole = lazy(() => import('./BlackHole'))
-
-function HeroFallback(): ReactElement {
-  return (
-    <div
-      aria-hidden="true"
-      className="
-        pointer-events-none
-        absolute
-        inset-[-10%]
-        bg-[radial-gradient(circle_at_center,rgba(175,169,236,0.10)_0%,rgba(82,70,140,0.05)_28%,transparent_62%)]
-        opacity-90
-      "
-    />
-  )
-}
+import Aurora from './Aurora.tsx'
+import CodeBlock from './CodeBlock.tsx'
 
 export default function Hero(): ReactElement {
   return (
     <section
       aria-labelledby="hero-heading"
-      className="px-3 pt-24 sm:px-6 sm:pt-28"
+      className="px-3 pt-[70px] sm:px-6 sm:pt-[30px]"
     >
       <div
         className="
           relative
           mx-auto
-          grid
-          min-h-[78vh]
+          flex
+          min-h-[84vh]
           w-full
           max-w-6xl
-          grid-cols-1
-          items-center
-          gap-10
-          md:grid-cols-[minmax(0,46%)_minmax(0,54%)]
-          md:gap-6
+          flex-col
+          justify-center
           overflow-hidden
           rounded-[20px]
           border
           border-[rgba(221,217,240,0.05)]
           bg-bg-base
           px-6
-          py-[72px]
+          py-[88px]
           isolate
+          sm:min-h-[600px]
           sm:px-16
+          sm:py-24
         "
       >
-        {/* Black hole */}
-        <Suspense fallback={<HeroFallback />}>
-          <BlackHole />
-        </Suspense>
+        {/* Aurora — Canvas 2D mesh-gradient blobs, lighter blend, no WebGL dependency */}
+        <Aurora />
 
         {/* Atmospheric vignette */}
         <div
@@ -104,16 +85,17 @@ export default function Hero(): ReactElement {
           "
         />
 
-        {/* Hero content — left column on desktop, top block on mobile */}
+        {/* Hero content — centered (was left-aligned grid column) */}
         <div
           className="
             relative
             z-10
-            max-w-xl
-            text-left
+            mx-auto
+            max-w-2xl
+            text-center
           "
         >
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex flex-wrap justify-center gap-2">
             <p
               className="
                 inline-flex
@@ -162,6 +144,7 @@ export default function Hero(): ReactElement {
             id="hero-heading"
             className="
               mt-8
+              text-center
               text-[clamp(2.25rem,6vw,3.35rem)]
               font-light
               leading-[1.06]
@@ -170,22 +153,26 @@ export default function Hero(): ReactElement {
               [text-shadow:0_2px_40px_rgba(13,11,26,0.98)]
             "
           >
-            Authentication that gets out of your way.
+            The auth layer
+            <br className="hidden sm:block" />
+            you actually own.
           </h1>
 
           <p
             className="
+              mx-auto
               mt-6
-              max-w-xl
+              max-w-[42rem]
+              text-center
               text-base
               leading-[1.7]
               text-text-secondary
               [text-shadow:0_1px_24px_rgba(13,11,26,0.98)]
             "
           >
-            Setup is suspiciously short. Describe it to your{' '}
-            <span className="text-[#8AC8BD]">coding agent</span> and come
-            back to working auth.
+            <span className="text-[#8AC8BD]">DB-agnostic</span>, open-source,
+            and built to be understood quickly. No vendor, no lock-in, just
+            your database and your code.
           </p>
 
           {/*
@@ -193,10 +180,12 @@ export default function Hero(): ReactElement {
             "Get started" (primary, silver) leads to /docs; "View on
             GitHub" stays as the quiet secondary ghost link beside it.
           */}
-          <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
+          <div className="mt-10 flex flex-wrap justify-center gap-3 sm:gap-6">
             <a
               href="/docs"
               className="
+                openauth-cta-glow
+                relative
                 inline-flex
                 min-h-[44px]
                 items-center
@@ -239,16 +228,13 @@ export default function Hero(): ReactElement {
               View on GitHub
             </a>
           </div>
+
+          {/* Install command — single npm line for now; pnpm/yarn tabs can be added here later */}
+          <div className="mx-auto mt-8 max-w-[360px]">
+            <CodeBlock code="npm install openauth" language="bash" showCursor />
+          </div>
         </div>
 
-        {/* Right column — reserves the hole's half on desktop, gives it
-            room below the copy on the mobile stack. The canvas itself
-            stays full-bleed behind everything; the hole is positioned
-            into this half via the uCenter uniform. */}
-        <div
-          aria-hidden="true"
-          className="relative z-0 h-[42vh] min-h-[320px] md:h-auto md:min-h-[58vh]"
-        />
       </div>
     </section>
   )
