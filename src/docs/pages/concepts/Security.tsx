@@ -15,7 +15,7 @@ export default function Security(): ReactElement {
         title="Security"
         lede={
           <>
-            What OpenAuth does to stay safe, stated plainly, followed by
+            What FreeAuth does to stay safe, stated plainly, followed by
             the known gaps, stated just as plainly. Read both before
             trusting it with anything that matters.
           </>
@@ -38,7 +38,7 @@ export default function Security(): ReactElement {
       <H2 id="known-concerns">Known concerns</H2>
       <P>
         These are verified properties of the current code, not
-        hypotheticals. If you deploy or extend OpenAuth, work through
+        hypotheticals. If you deploy or extend FreeAuth, work through
         them first:
       </P>
       <UL

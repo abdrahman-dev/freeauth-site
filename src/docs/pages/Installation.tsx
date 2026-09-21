@@ -26,7 +26,7 @@ export default function Installation(): ReactElement {
       />
 
       <H2 id="library">Use the library in your app</H2>
-      <Code language="bash" code="npm install openauth" />
+      <Code language="bash" code="npm install freeauth" />
       <P>
         Then install the peer for the database you actually run (one of
         the two, not both):
@@ -39,7 +39,7 @@ export default function Installation(): ReactElement {
       <Code
         language="ts"
         code={
-          "import { createAuth } from 'openauth'\nimport { mongooseAdapter } from 'openauth/mongoose'\nimport { prismaAdapter } from 'openauth/prisma'"
+          "import { createAuth } from 'freeauth'\nimport { mongooseAdapter } from 'freeauth/mongoose'\nimport { prismaAdapter } from 'freeauth/prisma'"
         }
         caption="Subpath exports for each adapter. See Adapters for what each one supports."
       />
@@ -59,7 +59,7 @@ export default function Installation(): ReactElement {
       <Code
         language="bash"
         code={
-          'npm install   # postinstall regenerates the Prisma client\nnpm run build # required: the app resolves openauth/* to dist/\nnpm start'
+          'npm install   # postinstall regenerates the Prisma client\nnpm run build # required: the app resolves freeauth/* to dist/\nnpm start'
         }
       />
       <Callout title="Rebuild before you run" tone="note">

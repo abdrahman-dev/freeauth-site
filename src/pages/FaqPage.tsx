@@ -8,7 +8,7 @@ import { GITHUB_URL } from '../lib/github.ts'
 
 function FaqPage(): ReactElement {
   useEffect(() => {
-    document.title = 'FAQ: OpenAuth'
+    document.title = 'FAQ: FreeAuth'
     let tag = document.querySelector('meta[name="description"]')
     if (tag === null) {
       tag = document.createElement('meta')
@@ -17,7 +17,7 @@ function FaqPage(): ReactElement {
     }
     tag.setAttribute(
       'content',
-      'Honest answers about OpenAuth: what it does, production readiness, supported databases, contributing, and licensing.',
+      'Honest answers about FreeAuth: what it does, production readiness, supported databases, contributing, and licensing.',
     )
   }, [])
 
@@ -35,7 +35,7 @@ function FaqPage(): ReactElement {
           aria-labelledby="faq-heading"
           className="mx-auto w-full max-w-3xl px-6 pt-24 sm:pt-28"
         >
-          <h1 className="sr-only">OpenAuth frequently asked questions</h1>
+          <h1 className="sr-only">FreeAuth frequently asked questions</h1>
           <SectionHeading
             title="Questions we're actually asked."
             headingId="faq-heading"

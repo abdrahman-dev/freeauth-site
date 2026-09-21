@@ -1,8 +1,8 @@
-# OpenAuth Site
+# FreeAuth Site
 
-Marketing site and documentation for OpenAuth, built with Vite, React, TypeScript, and Tailwind CSS.
+Marketing site and documentation for FreeAuth, built with Vite, React, TypeScript, and Tailwind CSS.
 
-This repository is the website and docs project. The actual OpenAuth backend and authentication library live in a separate repository: [abdrahman-dev/openauth](https://github.com/abdrahman-dev/openauth).
+This repository is the website and docs project. The actual FreeAuth backend and authentication library live in a separate repository: [abdrahman-dev/freeauth](https://github.com/abdrahman-dev/freeauth).
 
 ## Scripts
 
@@ -13,7 +13,7 @@ This repository is the website and docs project. The actual OpenAuth backend and
 
 ## Configuration
 
-- `VITE_GITHUB_REPO`: public repo used for the live star count. Defaults to `abdrahman-dev/openauth`. See `.env.example`.
+- `VITE_GITHUB_REPO`: public repo used for the live star count. Defaults to `abdrahman-dev/freeauth`. See `.env.example`.
 
 ## UI Guide
 

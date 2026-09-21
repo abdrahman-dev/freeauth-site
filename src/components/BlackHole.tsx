@@ -243,8 +243,8 @@ function isWebGLAvailable(): boolean {
 
 const FALLBACK_CLASS =
   [
-    'openauth-fallback-glow',
-    'openauth-fallback-glow-animated',
+    'freeauth-fallback-glow',
+    'freeauth-fallback-glow-animated',
     'pointer-events-none',
     'absolute',
     'inset-0',

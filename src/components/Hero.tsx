@@ -7,7 +7,7 @@ export default function Hero(): ReactElement {
   return (
     <section
       aria-labelledby="hero-heading"
-      className="px-3 pt-[70px] sm:px-6 sm:pt-[30px]"
+      className="px-3 pt-[70px] sm:px-6 sm:pt-[25px]"
     >
       <div
         className="
@@ -115,7 +115,7 @@ export default function Hero(): ReactElement {
               DB-agnostic&nbsp;&middot;&nbsp;Node.js&nbsp;&ge;&nbsp;18
             </p>
             <p
-              title="OpenAuth is pre-release. The API may still change, but it's already fun to try."
+              title="FreeAuth is pre-release. The API may still change, but it's already fun to try."
               className="
                 inline-flex
                 items-center
@@ -134,7 +134,7 @@ export default function Hero(): ReactElement {
             >
               <span
                 aria-hidden="true"
-                className="openauth-status-pulse inline-block h-[6px] w-[6px] rounded-full bg-success"
+                className="freeauth-status-pulse inline-block h-[6px] w-[6px] rounded-full bg-success"
               />
               Early development
             </p>
@@ -184,7 +184,7 @@ export default function Hero(): ReactElement {
             <a
               href="/docs"
               className="
-                openauth-cta-glow
+                freeauth-cta-glow
                 relative
                 inline-flex
                 min-h-[44px]
@@ -231,7 +231,7 @@ export default function Hero(): ReactElement {
 
           {/* Install command — single npm line for now; pnpm/yarn tabs can be added here later */}
           <div className="mx-auto mt-8 max-w-[360px]">
-            <CodeBlock code="npm install openauth" language="bash" showCursor />
+            <CodeBlock code="npm install freeauth" language="bash" showCursor />
           </div>
         </div>
 

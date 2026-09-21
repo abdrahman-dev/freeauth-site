@@ -9,14 +9,14 @@ interface FaqItem {
 
 const FAQS: FaqItem[] = [
   {
-    question: 'What does OpenAuth actually do?',
+    question: 'What does FreeAuth actually do?',
     answer:
       "It's the boring plumbing of login: sessions, tokens, password checks, packaged so you stop writing it from scratch. It doesn't host anything or lock you into a platform; it runs inside your Node app, against your database.",
   },
   {
     question: "Why DB-agnostic? Isn't that just extra abstraction?",
     answer:
-      'Every ORM has its own idea of what a user looks like, and every auth library picks a favorite. We got tired of re-learning auth each time the database changed, so OpenAuth adapts to the schema you already have instead of demanding its own tables.',
+      'Every ORM has its own idea of what a user looks like, and every auth library picks a favorite. We got tired of re-learning auth each time the database changed, so FreeAuth adapts to the schema you already have instead of demanding its own tables.',
   },
   {
     question: 'Is it ready to use in production?',

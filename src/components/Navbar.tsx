@@ -35,10 +35,10 @@ export default function Navbar(): ReactElement {
         <a
           href="/"
           className="flex min-h-[44px] min-w-0 items-center rounded-md px-2 transition-colors duration-200 hover:bg-[rgba(221,217,240,0.04)]"
-          aria-label="OpenAuth home"
+          aria-label="FreeAuth home"
         >
           <img
-            src="/logo/openauth-logo.png"
+            src="/logo/freeauth-logo.png"
             alt=""
             width={2171}
             height={724}

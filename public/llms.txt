@@ -1,11 +1,11 @@
-# OpenAuth
+# FreeAuth
 
-> OpenAuth is a database-agnostic authentication toolkit for Node.js. It provides email OTP verification, JWT access and refresh sessions with rotation and reuse detection, and per-flow lockouts, behind one core API that never touches your database driver directly.
+> FreeAuth is a database-agnostic authentication toolkit for Node.js. It provides email OTP verification, JWT access and refresh sessions with rotation and reuse detection, and per-flow lockouts, behind one core API that never touches your database driver directly.
 
-OpenAuth solves repeat auth plumbing: instead of rewriting login for every database, one core adapts to the schema you already run through adapters.
+FreeAuth solves repeat auth plumbing: instead of rewriting login for every database, one core adapts to the schema you already run through adapters.
 
-- Backend and library source: https://github.com/abdrahman-dev/openauth
-- This documentation site source: https://github.com/abdrahman-dev/openauth-site
+- Backend and library source: https://github.com/abdrahman-dev/freeauth
+- This documentation site source: https://github.com/abdrahman-dev/freeauth-site
 - Maintainer: Abdrahman Mussa
 
 ## Main concepts
@@ -13,7 +13,7 @@ OpenAuth solves repeat auth plumbing: instead of rewriting login for every datab
 - **Core**: all auth decisions live in one database-agnostic core (`createAuth`), shared by any consumer of the library.
 - **Adapters**: the only bridge between core and database. User operations plus session operations, normalized to `UserRecord` / `SessionRecord` shapes.
 - **Sessions**: short-lived stateless access tokens plus long-lived server-side refresh sessions. Every refresh rotates the pair; replaying an old token wipes all of the user's sessions.
-- **OTP**: 6-digit codes, hashed at rest, 10-minute expiry, per-flow attempt counters with lockouts. OpenAuth generates and verifies codes but sends nothing; delivery is the developer's job.
+- **OTP**: 6-digit codes, hashed at rest, 10-minute expiry, per-flow attempt counters with lockouts. FreeAuth generates and verifies codes but sends nothing; delivery is the developer's job.
 - **Reference app**: a small runnable Express app demonstrating one wiring of the library with MongoDB/Mongoose. Not part of the published package.
 
 ## Adapters
@@ -27,8 +27,8 @@ Documented adapters, and only these:
 
 Getting started:
 
-- [Introduction](/docs): what OpenAuth is and how it is organized
-- [Installation](/docs/installation): `npm install openauth`, adapter peers, reference-app setup
+- [Introduction](/docs): what FreeAuth is and how it is organized
+- [Installation](/docs/installation): `npm install freeauth`, adapter peers, reference-app setup
 - [Quickstart](/docs/quickstart): register, verify, log in, and call an authenticated endpoint
 
 Core concepts:
@@ -59,5 +59,5 @@ Also on this site: [FAQ](/faq) and the [landing page](/).
 
 ## Notes
 
-- OpenAuth is early-stage software; verify current status in the docs before building on it.
+- FreeAuth is early-stage software; verify current status in the docs before building on it.
 - Only behavior documented above and in the linked pages is claimed. Adapter support is exactly Prisma and Mongoose.

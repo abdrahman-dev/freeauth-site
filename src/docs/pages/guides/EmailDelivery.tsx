@@ -18,7 +18,7 @@ export default function EmailDelivery(): ReactElement {
         title="Email delivery"
         lede={
           <>
-            OpenAuth creates and verifies one-time codes but sends
+            FreeAuth creates and verifies one-time codes but sends
             nothing: no mailer, no provider SDK, no SMTP anywhere in the
             codebase. This guide shows exactly where your application
             takes over.
@@ -28,7 +28,7 @@ export default function EmailDelivery(): ReactElement {
 
       <H2 id="split">Who owns what</H2>
       <DataTable
-        head={['OpenAuth responsibility', 'Developer responsibility']}
+        head={['FreeAuth responsibility', 'Developer responsibility']}
         rows={[
           [
             'Generate the 6-digit code cryptographically.',

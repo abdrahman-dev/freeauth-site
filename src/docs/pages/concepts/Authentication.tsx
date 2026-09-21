@@ -134,7 +134,7 @@ export default function Authentication(): ReactElement {
       />
       <Callout title="Delivery is your application’s job" tone="note">
         <P>
-          OpenAuth generates, hashes, verifies, and consumes codes, but
+          FreeAuth generates, hashes, verifies, and consumes codes, but
           it sends nothing. The raw code is returned to your controller,
           which must hand it to an email provider. See{' '}
           <A href="/docs/guides/email-delivery">Email delivery</A>.

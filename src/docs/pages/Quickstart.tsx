@@ -20,7 +20,7 @@ export default function Quickstart(): ReactElement {
         lede={
           <>
             One full loop against a local reference app in a few minutes:
-            register, verify, log in, call an authenticated endpoint. OpenAuth sends no email, so verification codes
+            register, verify, log in, call an authenticated endpoint. FreeAuth sends no email, so verification codes
             come from the server log in development.
           </>
         }

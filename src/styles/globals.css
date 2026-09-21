@@ -164,7 +164,7 @@ body {
 }
 
 /* Static WebGL-fallback glow — same position/language as the shader scene */
-@keyframes openauth-glow-breathe {
+@keyframes freeauth-glow-breathe {
   0%,
   100% {
     opacity: 0.85;
@@ -176,7 +176,7 @@ body {
   }
 }
 
-.openauth-fallback-glow {
+.freeauth-fallback-glow {
   background: radial-gradient(
     ellipse at center,
     rgba(90, 86, 128, 0.12) 0%,
@@ -186,17 +186,17 @@ body {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .openauth-fallback-glow-animated {
-    animation: openauth-glow-breathe 9s ease-in-out infinite;
+  .freeauth-fallback-glow-animated {
+    animation: freeauth-glow-breathe 9s ease-in-out infinite;
   }
   /* Restrained "alive" pulse for the pre-release status dot — slow
      scale + opacity breathing, fully static when reduced motion set. */
-  .openauth-status-pulse {
-    animation: openauth-status-pulse 2.4s ease-in-out infinite;
+  .freeauth-status-pulse {
+    animation: freeauth-status-pulse 2.4s ease-in-out infinite;
   }
 }
 
-@keyframes openauth-status-pulse {
+@keyframes freeauth-status-pulse {
   0%,
   100% {
     opacity: 0.6;
@@ -235,7 +235,7 @@ body {
 /* Ambient glow halo behind the primary "Get started" CTA. Renders on
    ::before so it never fights the element's own hover shadow. Static
    glow by default; pulses only when motion is allowed. */
-.openauth-cta-glow::before {
+.freeauth-cta-glow::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -245,7 +245,7 @@ body {
   pointer-events: none;
 }
 
-@keyframes openauth-cta-glow {
+@keyframes freeauth-cta-glow {
   0%,
   100% {
     box-shadow: 0 0 18px rgba(221, 217, 240, 0.15);
@@ -259,8 +259,8 @@ body {
   .terminal-caret {
     animation: terminal-caret-blink 1s steps(1, end) infinite;
   }
-  .openauth-cta-glow::before {
-    animation: openauth-cta-glow 3s ease-in-out infinite;
+  .freeauth-cta-glow::before {
+    animation: freeauth-cta-glow 3s ease-in-out infinite;
   }
 }
 

@@ -1,7 +1,7 @@
-# OpenAuth UI Guide
+# FreeAuth UI Guide
 
 > **Status:** Canonical UI / UX reference  
-> **Scope:** Entire OpenAuth product — frontend, documentation UI, dashboard UI, auth screens, landing pages, reusable components, and future frontend packages.  
+> **Scope:** Entire FreeAuth product — frontend, documentation UI, dashboard UI, auth screens, landing pages, reusable components, and future frontend packages.  
 > **Priority:** This document is the **first and only visual source of truth** for the project.
 >
 > When implementing or modifying UI, an agent must follow this guide before introducing any new visual rule, color, typography choice, spacing pattern, component treatment, or interaction style.
@@ -10,7 +10,7 @@
 
 ## 1. Product Visual Identity
 
-OpenAuth is a **DB-agnostic authentication toolkit for Node.js**. Its UI should feel like infrastructure software rather than a generic SaaS marketing site.
+FreeAuth is a **DB-agnostic authentication toolkit for Node.js**. Its UI should feel like infrastructure software rather than a generic SaaS marketing site.
 
 The visual language is:
 
@@ -196,7 +196,7 @@ Do not introduce another white/silver unless a specific requirement proves these
 
 ## 3.4 Warm Accent Palette
 
-OpenAuth uses **one** secondary warm accent family to break the cold indigo/silver monotony without becoming colorful. It provides temperature contrast, not decoration.
+FreeAuth uses **one** secondary warm accent family to break the cold indigo/silver monotony without becoming colorful. It provides temperature contrast, not decoration.
 
 | Token | Name | Hex | Semantic Role |
 |---|---|---:|---|
@@ -243,7 +243,7 @@ Do not introduce any additional warm, orange, gold, yellow, cyan, or neon varian
 
 ## 3.5 Teal Accent Palette
 
-OpenAuth uses a second, cool-contrast accent to complement the warm accent without becoming colorful. It provides a quiet cyan counterpoint to the warm indigo/silver field — restrained, desaturated, never neon or saturated cyan.
+FreeAuth uses a second, cool-contrast accent to complement the warm accent without becoming colorful. It provides a quiet cyan counterpoint to the warm indigo/silver field — restrained, desaturated, never neon or saturated cyan.
 
 | Token | Name | Hex | Semantic Role |
 |---|---|---:|---|
@@ -1009,7 +1009,7 @@ Do not create a strong neon outline.
 
 # 13. Code Blocks
 
-Code is part of the product identity because OpenAuth is a developer tool.
+Code is part of the product identity because FreeAuth is a developer tool.
 
 Canonical code block:
 
@@ -1102,7 +1102,7 @@ Bottom border: rgba(221,217,240,0.05)
 
 ## Logo
 
-The OpenAuth mark is a **thin-line star glyph**.
+The FreeAuth mark is a **thin-line star glyph**.
 
 Primary logo treatment:
 
@@ -1238,7 +1238,7 @@ Use one primary CTA.
 Example pattern:
 
 ```text
-npm install openauth
+npm install freeauth
 ```
 
 Do not stack multiple visually competing silver CTAs inside the same hero.
@@ -1437,7 +1437,7 @@ Do not make the footer visually louder than the main content.
 
 # 19. Documentation UI
 
-Because OpenAuth is developer infrastructure, documentation must remain technical and restrained.
+Because FreeAuth is developer infrastructure, documentation must remain technical and restrained.
 
 The warm accent can be used for:
 
@@ -1936,7 +1936,7 @@ Only introduce a new token when an existing token truly cannot express the requi
 
 Ask:
 
-> Can an existing OpenAuth token express this?
+> Can an existing FreeAuth token express this?
 
 Usually the answer should be yes.
 
@@ -2154,7 +2154,7 @@ Light Typography
 +
 Technical Mono Details
 =
-OpenAuth UI
+FreeAuth UI
 ```
 
 ---
@@ -2185,7 +2185,7 @@ When choosing between a new visual effect and an existing component pattern:
 
 > **Reuse the existing pattern.**
 
-The goal is not to make OpenAuth look impressive through decoration.
+The goal is not to make FreeAuth look impressive through decoration.
 
 The goal is to make it look **deliberate, technical, trustworthy, and effortless to use**.
 

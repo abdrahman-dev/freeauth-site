@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 /* Single source for the public repo identity. The default is the
-   official OpenAuth backend repository. Override with
+   official FreeAuth backend repository. Override with
    VITE_GITHUB_REPO (see .env.example) only to point at a different
    repo, e.g. a fork. */
 
@@ -10,7 +10,7 @@ function resolveRepo(): string {
   if (typeof raw === 'string' && raw.length > 0) {
     return raw
   }
-  return 'abdrahman-dev/openauth'
+  return 'abdrahman-dev/freeauth'
 }
 
 export const GITHUB_REPO: string = resolveRepo()

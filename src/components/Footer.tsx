@@ -7,7 +7,7 @@ export default function Footer(): ReactElement {
     <footer className="bg-bg-base px-6 py-12 sm:px-10">
       <div className="mx-auto flex w-full max-w-5xl flex-col items-center justify-between gap-4 sm:flex-row">
         <p className="text-[13px] font-light text-text-muted">
-          &copy; 2026 OpenAuth
+          &copy; 2026 FreeAuth
         </p>
         <nav
           aria-label="Footer"
