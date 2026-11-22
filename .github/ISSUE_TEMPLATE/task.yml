@@ -1,0 +1,53 @@
+name: Task
+description: Plan a focused piece of work on the site.
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: What should be true when this is done?
+      placeholder: One or two sentences describing the outcome, not the steps.
+    validations:
+      required: true
+
+  - type: textarea
+    id: definition-of-done
+    attributes:
+      label: Definition of done
+      description: Concrete, checkable outcomes. Reviewers use this to judge the PR.
+      value: |
+        - [ ]
+        - [ ]
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context / links
+      description: Relevant files, pages, screenshots, or prior discussion.
+    validations:
+      required: false
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - frontend
+        - docs-content
+        - design
+        - other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        - P0
+        - P1
+        - P2
+    validations:
+      required: true
