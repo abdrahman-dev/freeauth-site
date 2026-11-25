@@ -1,8 +1,8 @@
-# FreeAuth Site
+# Starkeep Site
 
-Marketing site and documentation for FreeAuth, built with Vite, React, TypeScript, and Tailwind CSS.
+Marketing site and documentation for Starkeep, built with Vite, React, TypeScript, and Tailwind CSS.
 
-This repository is the website and docs project. The actual FreeAuth backend and authentication library live in a separate repository: [abdrahman-dev/freeauth](https://github.com/abdrahman-dev/freeauth).
+This repository is the website and docs project. The actual Starkeep backend and authentication library live in a separate repository: [abdrahman-dev/starkeep](https://github.com/abdrahman-dev/starkeep).
 
 ## Scripts
 
@@ -13,7 +13,7 @@ This repository is the website and docs project. The actual FreeAuth backend and
 
 ## Configuration
 
-- `VITE_GITHUB_REPO`: public repo used for the live star count. Defaults to `abdrahman-dev/freeauth`. See `.env.example`.
+- `VITE_GITHUB_REPO`: public repo used for the live star count. Defaults to `abdrahman-dev/starkeep`. See `.env.example`.
 
 ## UI Guide
 

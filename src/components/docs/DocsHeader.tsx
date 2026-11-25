@@ -62,11 +62,11 @@ export default function DocsHeader({
 
         <a
           href="/"
-          aria-label="FreeAuth home"
+          aria-label="Starkeep home"
           className="flex min-h-[40px] min-w-0 items-center gap-2.5 rounded-md px-1"
         >
           <span className="text-[16px] font-light tracking-[0.08em] text-silver-primary">
-            FreeAuth
+            Starkeep
           </span>
           <span className="inline-flex items-center rounded-[20px] border border-[rgba(221,217,240,0.12)] bg-[rgba(221,217,240,0.05)] px-2 py-0.5 font-mono text-[10px] tracking-[0.1em] text-text-dim">
             Docs
@@ -96,7 +96,7 @@ export default function DocsHeader({
             href={GITHUB_URL}
             target="_blank"
             rel="noreferrer"
-            aria-label="FreeAuth on GitHub"
+            aria-label="Starkeep on GitHub"
             className="inline-flex min-h-[40px] min-w-[40px] items-center justify-center rounded-[8px] text-text-secondary transition-colors duration-200 hover:bg-[rgba(221,217,240,0.04)] hover:text-silver-primary"
           >
             <GitHubIcon />

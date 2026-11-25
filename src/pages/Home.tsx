@@ -79,13 +79,13 @@ function EllipsisIcon({ className = '' }: IconProps): ReactElement {
 
 function Home(): ReactElement {
   useEffect(() => {
-    document.title = 'FreeAuth: Authentication for Node.js'
+    document.title = 'Starkeep: Authentication for Node.js'
     // Back/forward navigation reuses the document, so restore the
     // landing description after visiting a docs page.
     const tag = document.querySelector('meta[name="description"]')
     tag?.setAttribute(
       'content',
-      'FreeAuth: DB-agnostic authentication for Node.js. One API for Prisma and Mongoose.',
+      'Starkeep: DB-agnostic authentication for Node.js. One API for Prisma and Mongoose.',
     )
   }, [])
 
@@ -165,8 +165,8 @@ function Home(): ReactElement {
           </p>
           <div className="mt-6">
             <CodeBlock
-              code={`import { createAuth } from 'freeauth'
-import { mongooseAdapter } from 'freeauth/mongoose'
+              code={`import { createAuth } from 'starkeep'
+import { mongooseAdapter } from 'starkeep/mongoose'
 
 const auth = createAuth({
   adapter: mongooseAdapter(),
@@ -218,7 +218,7 @@ const auth = createAuth({
             >
               whoever shows up to build them
             </a>{' '}
-            Whichever stack you bring, FreeAuth meets it where it is.
+            Whichever stack you bring, Starkeep meets it where it is.
             No migration. No re-platforming. No new database religion.
           </p>
         </section>

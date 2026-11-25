@@ -49,7 +49,7 @@ export default function DocsLayout({
   const closeButtonRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
-    document.title = `${title}: FreeAuth Docs`
+    document.title = `${title}: Starkeep Docs`
     const description = DOCS_DESCRIPTIONS[path]
     if (description !== undefined) {
       let tag = document.querySelector('meta[name="description"]')

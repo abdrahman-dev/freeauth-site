@@ -1,4 +1,4 @@
-# Backend Reference — `freeauth` + Express Reference App
+# Backend Reference — `starkeep` + Express Reference App
 
 > Single source of truth for the backend as it **actually exists** in this repository.
 > Audited directly from source. No invented endpoints, fields, env vars, or behaviors.
@@ -35,7 +35,7 @@ This repository contains **two things that ship together but serve different rol
 
 | Part | Location | What it is |
 |------|----------|------------|
-| **A. `freeauth` library** | `src/` → built to `dist/` | Drop-in authentication library (OTP email verification, JWT access/refresh sessions with rotation + reuse detection, per-flow lockouts). Database-agnostic via an `AuthAdapter` interface. Published to npm as `freeauth` v0.1.0. |
+| **A. `starkeep` library** | `src/` → built to `dist/` | Drop-in authentication library (OTP email verification, JWT access/refresh sessions with rotation + reuse detection, per-flow lockouts). Database-agnostic via an `AuthAdapter` interface. Not published to npm yet (v0.1.0, pre-release); the library is currently used directly from the repository. |
 | **B. Express reference app** | `app.js`, `routes/`, `controllers/`, `middleware/`, `config/`, `model/`, `utils/` | Small runnable Express 5 app demonstrating one way to wire the library up with MongoDB/Mongoose. **Not** part of the published package (`package.json` `files` = `dist`, `README.md`, `LICENSE` only). |
 
 ### What the backend does
@@ -52,7 +52,7 @@ This repository contains **two things that ship together but serve different rol
 
 ### Architectural style
 
-- **Library (`src/`):** layered + adapter pattern. `core/authService.ts` holds 100% of business logic and talks **only** to the `AuthAdapter` interface (`src/core/types.ts`). `adapters/mongoose.ts` and `adapters/prisma.ts` translate that interface to Mongoose and Prisma respectively. `internal/` holds cross-cutting helpers (password hashing, OTP, JWT issuance, errors, logger, Mongoose models). The governing design doc is `doc/freeauth-architecture.md`.
+- **Library (`src/`):** layered + adapter pattern. `core/authService.ts` holds 100% of business logic and talks **only** to the `AuthAdapter` interface (`src/core/types.ts`). `adapters/mongoose.ts` and `adapters/prisma.ts` translate that interface to Mongoose and Prisma respectively. `internal/` holds cross-cutting helpers (password hashing, OTP, JWT issuance, errors, logger, Mongoose models). The governing design doc is `doc/starkeep-architecture.md`.
 - **Reference app:** thin Express adapter over the library. Route → rate limiter → Zod validation → controller → `auth.*` core method → adapter → MongoDB → JSON response + cookies. No service/repository layer of its own; all domain logic lives in the library.
 
 ### Main technologies
@@ -69,7 +69,7 @@ flowchart TD
     Router --> RouteLimiter["per-route rate limiter"]
     RouteLimiter --> Validate["validate(schema)"]
     Validate --> Controller["controllers/auth/authController.js"]
-    Controller --> Core["freeauth core: createAuth (src/core/authService.ts)"]
+    Controller --> Core["starkeep core: createAuth (src/core/authService.ts)"]
     Core --> Adapter["AuthAdapter: mongooseAdapter / prismaAdapter"]
     Adapter --> DB[("MongoDB (Mongoose) or PostgreSQL (Prisma)")]
     Core --> Tokens["authTokens + passwordService + otpService"]
@@ -130,7 +130,7 @@ Authsystem/
 ├── utils/
 │   ├── cookies.js                  # setAuthCookies(res, access, refresh) / clearAuthCookies(res)
 │   └── asyncHandler.js             # (fn) => (req,res,next) => Promise.resolve(fn(...)).catch(next)
-├── src/                            # `freeauth` library source (built to dist/; the published package)
+├── src/                            # `starkeep` library source (built to dist/; the published package)
 │   ├── core/
 │   │   ├── authService.ts          # createAuth(): all 10 domain operations (register, login, verify, refresh, ...)
 │   │   ├── types.ts                # AuthAdapter / UserAdapter / SessionAdapter / UserRecord / SessionRecord contracts
@@ -151,9 +151,9 @@ Authsystem/
 ├── prisma/
 │   └── schema.prisma               # Reference Prisma schema (PostgreSQL, User + RefreshToken); generator → generated/prisma
 ├── generated/prisma/               # Prisma client output (generated; gitignored)
-├── dist/                           # tsc build output of src/ (gitignored; what npm ships + what `freeauth/*` resolves to)
+├── dist/                           # tsc build output of src/ (gitignored; what npm ships + what `starkeep/*` resolves to)
 ├── doc/
-│   └── freeauth-architecture.md    # Design source of truth for core/adapter split, contracts, agent rules
+│   └── starkeep-architecture.md    # Design source of truth for core/adapter split, contracts, agent rules
 ├── package.json / package-lock.json
 ├── tsconfig.json                   # Dev/typecheck config (noEmit, allowImportingTsExtensions, includes src + app dirs)
 ├── tsconfig.build.json             # Build config (extends base; declaration + outDir dist, include src only)
@@ -164,7 +164,7 @@ Authsystem/
 Notes:
 
 - There is **no** `services/`, `repositories/`, `tests/`, `client/`, `frontend/`, `public/`, `Dockerfile`, `docker-compose.*`, or CI config. The old `repositories/*` referenced in comments were removed during the adapter refactor.
-- The reference app consumes the library **as an installed package** (`import { mongooseAdapter } from 'freeauth/mongoose'`), which resolves via `node_modules/freeauth` (a `file:.` self-install) to `dist/`, not to `src/`. That means `npm run build` output must be fresh for app behavior to reflect `src/` changes.
+- The reference app consumes the library **as an installed package** (`import { mongooseAdapter } from 'starkeep/mongoose'`), which resolves via `node_modules/starkeep` (a `file:.` self-install) to `dist/`, not to `src/`. That means `npm run build` output must be fresh for app behavior to reflect `src/` changes.
 - `controllers/auth/authController.js` imports `'../../config/auth.ts'` **with an explicit `.ts` extension** and `config/auth.ts` imports `'./env.js'` similarly. This relies on Node's native type-stripping (`allowImportingTsExtensions` in `tsconfig.json`); plain older Node setups without type-stripping support will fail to resolve these.
 - `docs/` (this file's parent) did not exist before this documentation task.
 
@@ -210,7 +210,7 @@ flowchart LR
     MW["middleware/*"] --> Env
 ```
 
-Key rule (enforced by convention + `doc/freeauth-architecture.md` §6, not by tooling): **core never imports a DB driver/ORM/model**. Verified: `src/core/authService.ts` imports only `internal/*` helpers and `core/types.ts` types.
+Key rule (enforced by convention + `doc/starkeep-architecture.md` §6, not by tooling): **core never imports a DB driver/ORM/model**. Verified: `src/core/authService.ts` imports only `internal/*` helpers and `core/types.ts` types.
 
 ### Controller/service responsibilities
 
@@ -970,7 +970,7 @@ Notes:
 
 **None.** Verified by reading all of `src/`, `controllers/`, `utils/`, `config/`, `model/`, and `package.json`:
 
-- **Email/SMS:** no mailer, no SMS, no provider SDK, no SMTP config. `registerUser`/`forgotPassword`/`resendOTP` return raw OTPs that the controller writes to stdout via `logger.info` (`[DEV] ... OTP for <email>: <otp>`). The README states this explicitly: *"freeauth does not send email… delivering it is your application's job."*
+- **Email/SMS:** no mailer, no SMS, no provider SDK, no SMTP config. `registerUser`/`forgotPassword`/`resendOTP` return raw OTPs that the controller writes to stdout via `logger.info` (`[DEV] ... OTP for <email>: <otp>`). The README states this explicitly: *"starkeep does not send email… delivering it is your application's job."*
 - **Cloud storage / payments / AI / OAuth / third-party APIs:** none. No `fetch`/`axios`/SDK calls, no webhooks, no OAuth `clientID`/`redirect` logic anywhere.
 - **Database hosting** (MongoDB Atlas in the local `.env`) is the only network dependency besides the client's own requests.
 
@@ -1090,7 +1090,7 @@ From `package.json:41-47` (only commands that exist):
 | Command | What it runs | Purpose |
 |---------|--------------|---------|
 | `npm install` | install (+ `postinstall`: `prisma generate`) | Install deps; regenerates Prisma client into `generated/prisma` |
-| `npm run build` | `tsc -p tsconfig.build.json` | Compile `src/**/*.ts(+js)` → `dist/` with declarations. **Required** before the reference app sees library changes (`freeauth/*` resolves to `dist/`) |
+| `npm run build` | `tsc -p tsconfig.build.json` | Compile `src/**/*.ts(+js)` → `dist/` with declarations. **Required** before the reference app sees library changes (`starkeep/*` resolves to `dist/`) |
 | `npm start` | `node app.js` | Run reference app (needs Node with type-stripping for `.ts` imports + valid env + MongoDB) |
 | `npm run dev` | `nodemon app.js` | Same with auto-restart |
 | `npm test` | `echo "Error: no test specified" && exit 1` | Placeholder — always fails; no suite exists |
@@ -1134,7 +1134,7 @@ Only behavior-material deps (from `package.json:57-88`):
 | `@prisma/client` `^7.10.0` | peer (optional) + dev | Client for the alternative adapter (Postgres). v7 idioms (no-datasource-url schema, `prisma-client` generator). |
 | `jsonwebtoken` `^9.0.3` | direct | `sign`/`verify` for both token kinds; HS256 default; `expiresIn` `15m` / 7 d-seconds. |
 | `bcryptjs` `^3.0.3` | direct | Pure-JS password hashing (10 rounds); no native build step. |
-| `freeauth` `file:.` | direct (self) | Reference app depends on the packed repo itself; resolves `freeauth` / `freeauth/mongoose` / `freeauth/prisma` to `dist/`. |
+| `starkeep` `file:.` | direct (self) | Reference app depends on the packed repo itself; resolves `starkeep` / `starkeep/mongoose` / `starkeep/prisma` to `dist/`. |
 | `zod` `^4.3.6` | dev* | Body + env validation (v4 API). |
 | `helmet` `^8.1.0` | dev* | Default security headers. |
 | `cors` `^2.8.6` | dev* | Single-origin credentialed CORS. |
@@ -1201,7 +1201,7 @@ Adapter-separated core, atomic session revocation with reuse wipe, per-flow OTP 
 
 | Term | Meaning in this repo |
 |------|----------------------|
-| `freeauth` | The library under `src/` (npm name); also the self-`file:.` dependency the reference app imports. Not OAuth, not a hosted service. |
+| `starkeep` | The library under `src/` (npm name); also the self-`file:.` dependency the reference app imports. Not OAuth, not a hosted service. |
 | Core | `src/core/authService.ts` + `types.ts` — DB-agnostic business logic created by `createAuth({ adapter, secrets })`. |
 | Adapter / `AuthAdapter` | `{ users: UserAdapter, sessions: SessionAdapter }` — the only bridge core→database. Implementations: `mongooseAdapter()`, `prismaAdapter(client)`. |
 | `UserRecord` / `SessionRecord` | Strict normalized shapes adapters must return (see §6); translation happens in adapters, never core. |
@@ -1212,11 +1212,11 @@ Adapter-separated core, atomic session revocation with reuse wipe, per-flow OTP 
 | Per-flow lockout | Independent 5-strikes/15-min locks for `verify` vs `reset` OTP flows (`verifyAttempts`/`verifyLockUntil`, `resetAttempts`/`resetLockUntil`). |
 | `AppError` | Operational error with `statusCode`, thrown by core and rendered verbatim by `errorHandler`. |
 | TTL index | MongoDB index (`expires: '0'` on `RefreshToken.expiresAt`) auto-deleting expired session rows server-side. |
-| `file:.` install | `package.json`'s `"freeauth": "file:."` — npm links the repo root as its own dependency so `import ... from 'freeauth/*'` resolves to local `dist/`. |
+| `file:.` install | `package.json`'s `"starkeep": "file:."` — npm links the repo root as its own dependency so `import ... from 'starkeep/*'` resolves to local `dist/`. |
 | Type-stripping | Node's native TS execution allowing `import … from './x.ts'`; required here by `authController.js` → `config/auth.ts`. |
 | CUID | Prisma `@default(cuid())` string IDs used by the reference Postgres schema (vs Mongo `ObjectId`). |
 | P2025 | Prisma "record not found" error on `update` of a missing row (Mongoose returns `null` instead) — noted divergence in `prisma.ts`. |
 
 ---
 
-*Sources: `app.js`, `config/env.js`, `config/cookie.js`, `config/auth.ts`, `routes/authRoutes.js`, `controllers/auth/authController.js`, `controllers/auth/authValidation.js`, `middleware/{authMiddleware,validate,rateLimiter,errorHandler}.js`, `model/mongodb.js`, `utils/{cookies,asyncHandler}.js`, `src/core/{authService,index,types}.ts`, `src/adapters/{mongoose,prisma}.ts`, `src/internal/{authTokens,passwordService,otpService,constants,errors,logger}.js`, `src/internal/models/{userModel,refreshToken}.js`, `prisma/schema.prisma`, `package.json`, `tsconfig{,.build}.json`, `.env` (values redacted), `.gitignore`, `README.md`, `doc/freeauth-architecture.md`. Generated (`generated/`, `dist/`) and `node_modules/` were used only to confirm build targets, not as behavior sources.*
+*Sources: `app.js`, `config/env.js`, `config/cookie.js`, `config/auth.ts`, `routes/authRoutes.js`, `controllers/auth/authController.js`, `controllers/auth/authValidation.js`, `middleware/{authMiddleware,validate,rateLimiter,errorHandler}.js`, `model/mongodb.js`, `utils/{cookies,asyncHandler}.js`, `src/core/{authService,index,types}.ts`, `src/adapters/{mongoose,prisma}.ts`, `src/internal/{authTokens,passwordService,otpService,constants,errors,logger}.js`, `src/internal/models/{userModel,refreshToken}.js`, `prisma/schema.prisma`, `package.json`, `tsconfig{,.build}.json`, `.env` (values redacted), `.gitignore`, `README.md`, `doc/starkeep-architecture.md`. Generated (`generated/`, `dist/`) and `node_modules/` were used only to confirm build targets, not as behavior sources.*

@@ -115,7 +115,7 @@ export default function Hero(): ReactElement {
               DB-agnostic&nbsp;&middot;&nbsp;Node.js&nbsp;&ge;&nbsp;18
             </p>
             <p
-              title="FreeAuth is pre-release. The API may still change, but it's already fun to try."
+              title="Starkeep is pre-release. The API may still change, but it's already fun to try."
               className="
                 inline-flex
                 items-center
@@ -231,7 +231,7 @@ export default function Hero(): ReactElement {
 
           {/* Install command — single npm line for now; pnpm/yarn tabs can be added here later */}
           <div className="mx-auto mt-8 max-w-[360px]">
-            <CodeBlock code="npm install freeauth" language="bash" showCursor />
+            <CodeBlock code="npm install starkeep" language="bash" showCursor />
           </div>
         </div>
 
