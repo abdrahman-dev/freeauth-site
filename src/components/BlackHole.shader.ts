@@ -1,5 +1,5 @@
 /**
- * BlackHole.shader.ts — isolated GLSL for the FreeAuth black hole.
+ * BlackHole.shader.ts — isolated GLSL for the Starkeep black hole.
  *
  * Palette is restricted to the Cosmic Indigo tokens (docs/ui-guide.md):
  * silver / silver-bright / silver-dim / indigo over a deep-space base.

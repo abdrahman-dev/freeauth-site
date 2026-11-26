@@ -182,13 +182,13 @@ export const DOCS_NAV: DocsNavGroup[] = [
    line restates what its page documents, nothing more. */
 export const DOCS_DESCRIPTIONS: Record<string, string> = {
   '/docs':
-    'FreeAuth is a database-agnostic authentication toolkit for Node.js. Start here for an overview of the library, adapters, and reference app.',
+    'Starkeep is a database-agnostic authentication toolkit for Node.js. Start here for an overview of the library, adapters, and reference app.',
   '/docs/installation':
-    'Install the freeauth package, add a Mongoose or Prisma peer dependency, and configure the reference app environment.',
+    'Install the starkeep package, add a Mongoose or Prisma peer dependency, and configure the reference app environment.',
   '/docs/quickstart':
     'Register a user, verify email with an OTP, log in, and call an authenticated endpoint against a local reference app.',
   '/docs/concepts/architecture':
-    'How FreeAuth is layered: routes, controllers, the database-agnostic core, adapters, and middleware, plus the request lifecycle.',
+    'How Starkeep is layered: routes, controllers, the database-agnostic core, adapters, and middleware, plus the request lifecycle.',
   '/docs/concepts/authentication':
     'JWT access tokens, server-side refresh sessions with rotation and reuse detection, OTP verification, password hashing, and cookies.',
   '/docs/concepts/adapters':
@@ -228,7 +228,7 @@ export const DOCS_DESCRIPTIONS: Record<string, string> = {
   '/docs/adapters/prisma':
     'PostgreSQL adapter: reference schema, usage with your own client, differences, and current limits.',
   '/docs/guides/email-delivery':
-    'FreeAuth generates OTPs but sends nothing. Hook issuance points to your email provider.',
+    'Starkeep generates OTPs but sends nothing. Hook issuance points to your email provider.',
   '/docs/guides/production':
     'Checklist for running the reference app beyond localhost: build, environment, secrets, and explicit unknowns.',
 }

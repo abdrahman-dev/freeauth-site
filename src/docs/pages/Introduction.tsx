@@ -19,7 +19,7 @@ export default function Introduction(): ReactElement {
         title="Introduction"
         lede={
           <>
-            FreeAuth is a{' '}
+            Starkeep is a{' '}
             <span className="text-[#8AC8BD]">database-agnostic</span>{' '}
             authentication toolkit for Node.js: email OTP verification,
             JWT access and refresh sessions with rotation and reuse
@@ -54,8 +54,8 @@ export default function Introduction(): ReactElement {
         head={['Part', 'What it is']}
         rows={[
           [
-            <C key="lib">freeauth library</C>,
-            'The drop-in package published to npm. All business logic lives here and talks only to an adapter interface, never to Mongoose or Prisma directly.',
+            <C key="lib">starkeep library</C>,
+            'The drop-in library package, not published to npm yet. All business logic lives here and talks only to an adapter interface, never to Mongoose or Prisma directly.',
           ],
           [
             <C key="app">Reference app</C>,
@@ -65,7 +65,7 @@ export default function Introduction(): ReactElement {
       />
       <Callout title="Not OAuth, not hosted" tone="note">
         <P>
-          Despite the name, FreeAuth is not OAuth and not a service you
+          Despite the name, Starkeep is not OAuth and not a service you
           sign up for. It runs inside your Node app, against your
           database. There are no redirects to a provider, no API keys to a
           cloud, and no hosted dashboard.
@@ -74,7 +74,8 @@ export default function Introduction(): ReactElement {
 
       <H2 id="maturity">Maturity</H2>
       <P>
-        FreeAuth is published as <C>v0.1.0</C> and the API is still
+        Starkeep is not published to npm yet (<C>v0.1.0</C>, pre-release),
+        so it is used directly from the repository, and the API is still
         shifting. It is a good fit for side projects and for kicking the
         tires; hold off on anything carrying real user data until the
         status changes. Where behavior is known to be rough, these docs
@@ -101,7 +102,7 @@ export default function Introduction(): ReactElement {
 
       <H2 id="support">Support this project</H2>
       <P>
-        FreeAuth is free and open-source. If it helps your work, consider
+        Starkeep is free and open-source. If it helps your work, consider
         supporting its maintenance.
       </P>
       <div className="mt-6">
