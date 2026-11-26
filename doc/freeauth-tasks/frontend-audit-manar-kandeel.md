@@ -282,4 +282,3 @@ One thing is correct on the site and wrong in the backend doc: the `GET /me` res
 5. **When is npm publish planned?** That decides whether to change the hero install line or keep it.
 6. **Is the site itself MIT-licensed?** There's no LICENSE file in this repo.
 7. **Delivery path:** the task says `doc/freeauth-tasks/`, but this repo uses `docs/` and the project is now Starkeep. Also, the branch name `audit/frontend-…` doesn't match the branch types in `CONTRIBUTING.md` (`feat|fix|docs|chore|design`). I followed the task text.
-8. **"Free forever… no paid tier… never will be"** (`Home.tsx:207-208`): is this final? The onboarding guide mentions a possible paid cloud service later.
